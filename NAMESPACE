@@ -1,0 +1,7 @@
+useDynLib("poilog2", .registration=TRUE)
+
+exportPattern("^[[:alpha:]]+")
+export("rztpln",
+       "rztpois")
+
+importFrom(Rcpp, evalCpp)
