@@ -22,6 +22,12 @@ int rztpois(double lambda){
     s = t;
   }
   while (s < u){
+    k += 100;
+    t = (R::ppois(k, lambda, 1, 0) - exp(-lambda)) / (1 - exp(-lambda));
+    s = t;
+  }
+    k = k - 100; 
+  while (s < u){
     k += 1;
     t = (R::ppois(k, lambda, 1, 0) - exp(-lambda)) / (1 - exp(-lambda));
     s = t;
@@ -49,6 +55,12 @@ int rpoilog_tmp(double mu, double sigma){
     t = (R::ppois(k, lambda, 1, 0) - exp(-lambda)) / (1 - exp(-lambda));
     s = t;
   }
+  while (s < u){
+    k += 100;
+    t = (R::ppois(k, lambda, 1, 0) - exp(-lambda)) / (1 - exp(-lambda));
+    s = t;
+  }
+    k = k - 100; 
   while (s < u){
     k += 1;
     t = (R::ppois(k, lambda, 1, 0) - exp(-lambda)) / (1 - exp(-lambda));
