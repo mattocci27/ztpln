@@ -34,7 +34,7 @@ The zero-truncated Poisson distribution can be derived from a Poisson distributi
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=Pois_{ztm}(k&space;;&space;\lambda)&space;=&space;\frac{Pois(k&space;;&space;\lambda)}{1-Pois(0&space;;&space;\lambda)}&space;=&space;\frac{Pois(k&space;;&space;\lambda)}{1-e^{-\lambda}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?Pois_{ztm}(k&space;;&space;\lambda)&space;=&space;\frac{Pois(k&space;;&space;\lambda)}{1-Pois(0&space;;&space;\lambda)}&space;=&space;\frac{Pois(k&space;;&space;\lambda)}{1-e^{-\lambda}}" title="Pois_{ztm}(k ; \lambda) = \frac{Pois(k ; \lambda)}{1-Pois(0 ; \lambda)} = \frac{Pois(k ; \lambda)}{1-e^{-\lambda}}" /></a>
 
-<img src="https://latex.codecogs.com/gif.latex?Pois_{ztm}(k&space;;&space;\lambda)&space;=&space;\frac{Pois(k&space;;&space;\lambda)}{1-Pois(0&space;;&space;\lambda)}&space;=&space;\frac{Pois(k&space;;&space;\lambda)}{1-e^{-\lambda}}" title="Pois_{ztm}(k ; \lambda) = \frac{Pois(k ; \lambda)}{1-Pois(0 ; \lambda)} = \frac{Pois(k ; \lambda)}{1-e^{-\lambda}}" />
+<img src="https://latex.codecogs.com/svg.latex?Pois_{ztm}(k&space;;&space;\lambda)&space;=&space;\frac{Pois(k&space;;&space;\lambda)}{1-Pois(0&space;;&space;\lambda)}&space;=&space;\frac{Pois(k&space;;&space;\lambda)}{1-e^{-\lambda}}" title="Pois_{ztm}(k ; \lambda) = \frac{Pois(k ; \lambda)}{1-Pois(0 ; \lambda)} = \frac{Pois(k ; \lambda)}{1-e^{-\lambda}}" />
 
 
 and the cumulative density is
