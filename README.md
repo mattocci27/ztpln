@@ -19,13 +19,17 @@ mu, mu1, mu2, sigma, sigma1, sigma2: mean and standard deviation of the distribu
 
 A compound Poisson-lognormal distribution is a Poisson probability distribution where its parameter λ is a random variable with lognormal distribution, that is to say logλ are normally distributed with mean μ and variance σ2 (Bulmer 1974). The density function is
 
-
 $$
 \mathcal{PLN} (k ; \mu, \sigma) = \int_0^\infty {Pois}(k; \lambda) \times \mathcal{N}(log\lambda; \mu, \sigma) d\lambda　\\
 = \frac{1}{\sqrt{2\pi\sigma^2}k!}\int^\infty_0\lambda^{k-1}exp(-\lambda)exp(\frac{-(log\lambda-\mu)^2}{2\sigma^2})d\lambda, \; \text{where} \; k = 0, 1, 2, ... \;.
 $$
 
-![](/img/eq1.png)
+<img src="https://latex.codecogs.com/gif.latex?\mathcal{PLN}&space;(k&space;;&space;\mu,&space;\sigma)&space;=&space;\int_0^\infty&space;{Pois}(k;&space;\lambda)&space;\times&space;\mathcal{N}(log\lambda;&space;\mu,&space;\sigma)&space;d\lambda&space;\\&space;=&space;\frac{1}{\sqrt{2\pi\sigma^2}k!}\int^\infty_0\lambda^{k-1}exp(-\lambda)exp(\frac{-(log\lambda-\mu)^2}{2\sigma^2})d\lambda,&space;\;&space;\text{where}&space;\;&space;k&space;=&space;0,&space;1,&space;2,&space;...&space;\;." title="\mathcal{PLN} (k ; \mu, \sigma) = \int_0^\infty {Pois}(k; \lambda) \times \mathcal{N}(log\lambda; \mu, \sigma) d\lambda \\ = \frac{1}{\sqrt{2\pi\sigma^2}k!}\int^\infty_0\lambda^{k-1}exp(-\lambda)exp(\frac{-(log\lambda-\mu)^2}{2\sigma^2})d\lambda, \; \text{where} \; k = 0, 1, 2, ... \;." />
+
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\mathcal{PLN}&space;(k&space;;&space;\mu,&space;\sigma)&space;=&space;\int_0^\infty&space;{Pois}(k;&space;\lambda)&space;\times&space;\mathcal{N}(log\lambda;&space;\mu,&space;\sigma)&space;d\lambda&space;\\&space;=&space;\frac{1}{\sqrt{2\pi\sigma^2}k!}\int^\infty_0\lambda^{k-1}exp(-\lambda)exp(\frac{-(log\lambda-\mu)^2}{2\sigma^2})d\lambda,&space;\;&space;\text{where}&space;\;&space;k&space;=&space;0,&space;1,&space;2,&space;...&space;\;." target="_blank"><img src="https://latex.codecogs.com/svg.latex?\mathcal{PLN}&space;(k&space;;&space;\mu,&space;\sigma)&space;=&space;\int_0^\infty&space;{Pois}(k;&space;\lambda)&space;\times&space;\mathcal{N}(log\lambda;&space;\mu,&space;\sigma)&space;d\lambda&space;\\&space;=&space;\frac{1}{\sqrt{2\pi\sigma^2}k!}\int^\infty_0\lambda^{k-1}exp(-\lambda)exp(\frac{-(log\lambda-\mu)^2}{2\sigma^2})d\lambda,&space;\;&space;\text{where}&space;\;&space;k&space;=&space;0,&space;1,&space;2,&space;...&space;\;." title="\mathcal{PLN} (k ; \mu, \sigma) = \int_0^\infty {Pois}(k; \lambda) \times \mathcal{N}(log\lambda; \mu, \sigma) d\lambda \\ = \frac{1}{\sqrt{2\pi\sigma^2}k!}\int^\infty_0\lambda^{k-1}exp(-\lambda)exp(\frac{-(log\lambda-\mu)^2}{2\sigma^2})d\lambda, \; \text{where} \; k = 0, 1, 2, ... \;." /></a>
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=X[n]&space;=&space;\sum_{k=0}^{N-1}x[k]\exp({-j\frac{2&space;\pi&space;nk}{N}})" target="_blank"><img src="https://latex.codecogs.com/gif.latex?X[n]&space;=&space;\sum_{k=0}^{N-1}x[k]\exp({-j\frac{2&space;\pi&space;nk}{N}})" title="X[n] = \sum_{k=0}^{N-1}x[k]\exp({-j\frac{2 \pi nk}{N}})" /></a>
 
 
 Thus, random sampling from PLN(n, mu, sig) will be:
@@ -42,7 +46,6 @@ $$
 Pois_{ztm}(k ; \lambda) = \frac{Pois(k ; \lambda)}{1-Pois(0 ; \lambda)} = \frac{Pois(k ; \lambda)}{1-e^{-\lambda}}
 $$
 
-![](/img/eq2.png)
 
 
 and the cumulative density is
@@ -55,9 +58,6 @@ G(k; \lambda) = \int_k \frac{Pois(k ; \lambda)}{1-e^{-\lambda}}dk \\
 =  \frac{1}{1-e^{-\lambda}} \bigl\{F(k; \lambda) - e^{-\lambda}\bigr\}
 $$
 
-![](/img/eq3.png)
-
-<img src="/img/eq3.png" width="320px">
 
 where $F(k;\lambda)$ is the cumulative density of a Poisson distribution such that $F(k;\lambda) = e^{-\lambda}\sum_{i=0}^{k} \frac{\lambda^i}{i!}$. Now we can generate random samples from a zero truncated Poisson lognormal distribution by inverse transform sampling with this cumulative distribution function of a zero-truncated Poisson.
 
