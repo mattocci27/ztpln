@@ -8,7 +8,7 @@ devtools::install_github("mattocci27/poilog2")
 
 ## Functions
 - ztpln(n, mu, sigma): random draw from a zero truncated poisson lognormal distribution
-- ztpln2(n, mu1, sigma1, mu2, sigma2, theta): random draw from a zero truncated poisson lognormal distribution mixture $\theta \mathcal{PLN}(\mu_1, \sigma_1) + (1 -\theta) \mathcal{PLN}(\mu_1, \sigma_1)$, where $0 < \theta< 1$ is the mixture weight.
+- ztpln2(n, mu1, sigma1, mu2, sigma2, theta): random draw from a zero truncated poisson lognormal distribution mixture <img src="https://latex.codecogs.com/svg.latex?\inline&space;\theta&space;\mathcal{PLN}(\mu_1,&space;\sigma_1)&space;&plus;&space;(1&space;-\theta)&space;\mathcal{PLN}(\mu_1,&space;\sigma_1)" title="\theta \mathcal{PLN}(\mu_1, \sigma_1) + (1 -\theta) \mathcal{PLN}(\mu_1, \sigma_1)" />, where 0 < $\theta$ < 1 is the mixture weight.
 
 ## Arguments
 n: number of random values to return.  
@@ -32,23 +32,16 @@ rpois(exp(lambda))
 
 The zero-truncated Poisson distribution can be derived from a Poisson distribution,
 
-<a href="https://www.codecogs.com/eqnedit.php?latex=Pois_{ztm}(k&space;;&space;\lambda)&space;=&space;\frac{Pois(k&space;;&space;\lambda)}{1-Pois(0&space;;&space;\lambda)}&space;=&space;\frac{Pois(k&space;;&space;\lambda)}{1-e^{-\lambda}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?Pois_{ztm}(k&space;;&space;\lambda)&space;=&space;\frac{Pois(k&space;;&space;\lambda)}{1-Pois(0&space;;&space;\lambda)}&space;=&space;\frac{Pois(k&space;;&space;\lambda)}{1-e^{-\lambda}}" title="Pois_{ztm}(k ; \lambda) = \frac{Pois(k ; \lambda)}{1-Pois(0 ; \lambda)} = \frac{Pois(k ; \lambda)}{1-e^{-\lambda}}" /></a>
 
 <img src="https://latex.codecogs.com/svg.latex?Pois_{ztm}(k&space;;&space;\lambda)&space;=&space;\frac{Pois(k&space;;&space;\lambda)}{1-Pois(0&space;;&space;\lambda)}&space;=&space;\frac{Pois(k&space;;&space;\lambda)}{1-e^{-\lambda}}" title="Pois_{ztm}(k ; \lambda) = \frac{Pois(k ; \lambda)}{1-Pois(0 ; \lambda)} = \frac{Pois(k ; \lambda)}{1-e^{-\lambda}}" />
 
 
 and the cumulative density is
 
-$$
-G(k; \lambda) = \int_k \frac{Pois(k ; \lambda)}{1-e^{-\lambda}}dk \\
-=  \frac{1}{1-e^{-\lambda}}\int_k Pois(k ; \lambda)dk \\
-=  \frac{e^{-\lambda}}{1-e^{-\lambda}} \sum_{i=1}^{k} \frac{\lambda^i}{i!} \\
-=  \frac{1}{1-e^{-\lambda}} \bigl\{F(k; \lambda) - F(0; \lambda)\bigr\} \\
-=  \frac{1}{1-e^{-\lambda}} \bigl\{F(k; \lambda) - e^{-\lambda}\bigr\}
-$$
+<img src="https://latex.codecogs.com/svg.latex?G(k;&space;\lambda)&space;=&space;\int_k&space;\frac{Pois(k&space;;&space;\lambda)}{1-e^{-\lambda}}dk&space;\\&space;=&space;\frac{1}{1-e^{-\lambda}}\int_k&space;Pois(k&space;;&space;\lambda)dk&space;\\&space;=&space;\frac{e^{-\lambda}}{1-e^{-\lambda}}&space;\sum_{i=1}^{k}&space;\frac{\lambda^i}{i!}&space;\\&space;=&space;\frac{1}{1-e^{-\lambda}}&space;\bigl\{F(k;&space;\lambda)&space;-&space;F(0;&space;\lambda)\bigr\}&space;\\&space;=&space;\frac{1}{1-e^{-\lambda}}&space;\bigl\{F(k;&space;\lambda)&space;-&space;e^{-\lambda}\bigr\}" title="G(k; \lambda) = \int_k \frac{Pois(k ; \lambda)}{1-e^{-\lambda}}dk \\ = \frac{1}{1-e^{-\lambda}}\int_k Pois(k ; \lambda)dk \\ = \frac{e^{-\lambda}}{1-e^{-\lambda}} \sum_{i=1}^{k} \frac{\lambda^i}{i!} \\ = \frac{1}{1-e^{-\lambda}} \bigl\{F(k; \lambda) - F(0; \lambda)\bigr\} \\ = \frac{1}{1-e^{-\lambda}} \bigl\{F(k; \lambda) - e^{-\lambda}\bigr\}" />
 
 
-where $F(k;\lambda)$ is the cumulative density of a Poisson distribution such that $F(k;\lambda) = e^{-\lambda}\sum_{i=0}^{k} \frac{\lambda^i}{i!}$. Now we can generate random samples from a zero truncated Poisson lognormal distribution by inverse transform sampling with this cumulative distribution function of a zero-truncated Poisson.
+where <img src="https://latex.codecogs.com/svg.latex?\inline&space;F(k;\lambda)" title="F(k;\lambda)" /> is the cumulative density of a Poisson distribution such that <img src="https://latex.codecogs.com/svg.latex?\inline&space;F(k;\lambda)&space;=&space;e^{-\lambda}\sum_{i=0}^{k}&space;\frac{\lambda^i}{i!}" title="F(k;\lambda) = e^{-\lambda}\sum_{i=0}^{k} \frac{\lambda^i}{i!}" />. Now we can generate random samples from a zero truncated Poisson lognormal distribution by inverse transform sampling with this cumulative distribution function of a zero-truncated Poisson.
 
 ## Examples
 
