@@ -44,6 +44,8 @@ $$
 ```tex
 \mathcal{Pois}_{ztm}(k ; \lambda) = \frac{\mathcal{Pois}(k ; \lambda)}{1-\mathcal{Pois}(0 ; \lambda)} = \frac{\mathcal{Pois}(k ; \lambda)}{1-e^{-\lambda}}
 ```
+<a href="https://www.codecogs.com/eqnedit.php?latex=\mathcal{PLN}&space;(k&space;;&space;\mu,&space;\sigma)&space;=&space;\int_0^\infty&space;\mathcal{Pois}(k;&space;\lambda)&space;\times&space;\mathcal{N}(log\lambda;&space;\mu,&space;\sigma)&space;d\lambda&space;\\&space;=&space;\frac{1}{\sqrt{2\pi\sigma^2}k!}\int^\infty_0\lambda^{k-1}exp(-\lambda)exp(\frac{-(log\lambda-\mu)^2}{2\sigma^2})d\lambda,&space;\;&space;\text{where}&space;\;&space;k&space;=&space;0,&space;1,&space;2,&space;...&space;\;." target="_blank"><img src="https://latex.codecogs.com/gif.latex?\mathcal{PLN}&space;(k&space;;&space;\mu,&space;\sigma)&space;=&space;\int_0^\infty&space;\mathcal{Pois}(k;&space;\lambda)&space;\times&space;\mathcal{N}(log\lambda;&space;\mu,&space;\sigma)&space;d\lambda&space;\\&space;=&space;\frac{1}{\sqrt{2\pi\sigma^2}k!}\int^\infty_0\lambda^{k-1}exp(-\lambda)exp(\frac{-(log\lambda-\mu)^2}{2\sigma^2})d\lambda,&space;\;&space;\text{where}&space;\;&space;k&space;=&space;0,&space;1,&space;2,&space;...&space;\;." title="\mathcal{PLN} (k ; \mu, \sigma) = \int_0^\infty \mathcal{Pois}(k; \lambda) \times \mathcal{N}(log\lambda; \mu, \sigma) d\lambda \\ = \frac{1}{\sqrt{2\pi\sigma^2}k!}\int^\infty_0\lambda^{k-1}exp(-\lambda)exp(\frac{-(log\lambda-\mu)^2}{2\sigma^2})d\lambda, \; \text{where} \; k = 0, 1, 2, ... \;." /></a>
+
 
 and the cumulative density is
 
