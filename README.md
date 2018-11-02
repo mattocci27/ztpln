@@ -8,7 +8,7 @@ devtools::install_github("mattocci27/poilog2")
 
 ## Functions
 - ztpln(n, mu, sigma): random draw from a zero truncated poisson lognormal distribution
-- ztpln2(n, mu1, sigma1, mu2, sigma2, theta): random draw from a zero truncated poisson lognormal distribution mixture <img src="https://latex.codecogs.com/svg.latex?\inline&space;\large&space;\theta&space;\mathcal{PLN}(\mu_1,&space;\sigma_1)&space;&plus;&space;(1&space;-\theta)&space;\mathcal{PLN}(\mu_1,&space;\sigma_1)" title="\large \theta \mathcal{PLN}(\mu_1, \sigma_1) + (1 -\theta) \mathcal{PLN}(\mu_1, \sigma_1)" />, where 0 < *θ* < 1 is the mixture weight.
+- ztpln2(n, mu1, sigma1, mu2, sigma2, theta): random draw from a zero truncated poisson lognormal distribution mixture <img src="https://latex.codecogs.com/svg.latex?\inline&space;\large&space;\theta&space;\mathcal{PLN}(\mu_1,&space;\sigma_1)&space;&plus;&space;(1&space;-\theta)&space;\mathcal{PLN}(\mu_1,&space;\sigma_1)" title="\large \theta \mathcal{PLN}(\mu_1, \sigma_1) + (1 -\theta) \mathcal{PLN}(\mu_1, \sigma_1)" />, where 0 < $\theta$ < 1 is the mixture weight.
 
 ## Arguments
 n: number of random values to return.  
