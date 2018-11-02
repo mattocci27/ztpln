@@ -11,7 +11,8 @@ devtools::install_github("mattocci27/poilog2")
 - ztpln2(n, mu1, sigma1, mu2, sigma2, theta): random draw from a zero truncated poisson lognormal distribution mixture $\theta \mathcal{PLN}(\mu_1, \sigma_1) + (1 -\theta) \mathcal{PLN}(\mu_1, \sigma_1)$, where $0 < \theta< 1$ is the mixture weight.
 
 ## Arguments
-n: number of random values to return.
+n: number of random values to return.  
+
 mu, mu1, mu2, sigma, sigma1, sigma2: mean and standard deviation of the distribution on the log scale.
 
 ## Details
@@ -22,6 +23,8 @@ $$
 \mathcal{PLN} (k ; \mu, \sigma) = \int_0^\infty \mathcal{Pois}(k; \lambda) \times \mathcal{N}(log\lambda; \mu, \sigma) d\lambda　\\
 = \frac{1}{\sqrt{2\pi\sigma^2}k!}\int^\infty_0\lambda^{k-1}exp(-\lambda)exp(\frac{-(log\lambda-\mu)^2}{2\sigma^2})d\lambda, \; \text{where} \; k = 0, 1, 2, ... \;.
 $$
+
+
 
 Thus, random sampling from PLN(n, mu, sig) will be:
 
@@ -36,6 +39,11 @@ The zero-truncated Poisson distribution can be derived from a Poisson distributi
 $$
 \mathcal{Pois}_{ztm}(k ; \lambda) = \frac{\mathcal{Pois}(k ; \lambda)}{1-\mathcal{Pois}(0 ; \lambda)} = \frac{\mathcal{Pois}(k ; \lambda)}{1-e^{-\lambda}}
 $$
+
+
+```tex
+\mathcal{Pois}_{ztm}(k ; \lambda) = \frac{\mathcal{Pois}(k ; \lambda)}{1-\mathcal{Pois}(0 ; \lambda)} = \frac{\mathcal{Pois}(k ; \lambda)}{1-e^{-\lambda}}
+```
 
 and the cumulative density is
 
