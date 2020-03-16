@@ -5,3 +5,8 @@
 src/*.o
 src/*.so
 src/*.dll
+test.rmd
+kitematic/*
+doc
+Meta
+cran-comments.md
