@@ -21,9 +21,9 @@
 #' @examples
 #' rztplnm(n = 100, mu = c(0, 5), sig = c(1, 2), theta = c(0.2, 0.8))
 #' dztplnm(x = 1:100, mu = c(0, 5), sig = c(1, 2), theta = c(0.2, 0.8))
-#' dztplnm(x = 1:100, mu = c(0, 5), sig = c(1, 2), theta = c(0.2, 0.8), type1 = TRUE)
+#' dztplnm(x = 1:100, mu = c(0, 5), sig = c(1, 2), theta = c(0.2, 0.8), type1 = FALSE)
 #' @export
-dztplnm <- function(x, mu, sig, theta, log = FALSE, type1 = FALSE) {
+dztplnm <- function(x, mu, sig, theta, log = FALSE, type1 = TRUE) {
   if (length(mu) != length(sig) |
       length(mu) != length(theta) |
       length(sig) != length(theta)) {
@@ -40,7 +40,7 @@ dztplnm <- function(x, mu, sig, theta, log = FALSE, type1 = FALSE) {
 
 #' @rdname dztplnm
 #' @export
-rztplnm <- function(n, mu, sig, theta, type1 = FALSE) {
+rztplnm <- function(n, mu, sig, theta, type1 = TRUE) {
   # theta: mixture weight for the first compoment
   if (length(mu) != length(sig) | length(mu) != length(theta) |
       length(sig) != length(theta)) {
@@ -48,11 +48,8 @@ rztplnm <- function(n, mu, sig, theta, type1 = FALSE) {
          variance and mixture weight need to be same.")
   }
   if (sum(theta) != 1) warning("Sum of the mixture weight should be 1.")
-  if (type1) stop("type 1 ztpln random sampling is not implemented. 
-                  Please use type1 = FALSE")
   z <- rmultinom(n, 1, theta)
   z2 <- as.numeric(z * seq(1, length(mu)))
   z3 <- z2[z2 > 0]
-  x <- do_vec2_rztpln(n, mu[z3], sig[z3])
-  return(x)
+  if (type1) do_vec2_rztpln1(n, mu[z3], sig[z3]) else do_vec2_rztpln2(n, mu[z3], sig[z3])
 }

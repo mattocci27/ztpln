@@ -29,11 +29,11 @@
 #' @seealso \code{\link{dztplnm}}
 #'
 #' @examples
-#' rztpln(n = 10, mu = 0, sig = 1, type1 = FALSE)
-#' rztpln(n = 10, mu = 6, sig = 4, type1 = FALSE)
+#' rztpln(n = 10, mu = 0, sig = 1, type1 = TRUE)
+#' rztpln(n = 10, mu = 6, sig = 4, type1 = TRUE)
 #' dztpln(x = 1:5, mu = 1, sig = 2)
 #' @export
-dztpln <- function(x, mu, sig, log = FALSE, type1 = FALSE) {
+dztpln <- function(x, mu, sig, log = FALSE, type1 = TRUE) {
 	if (length(mu) > 1 | length(sig) > 1)
     stop("Vectorization of parameters not implemented")
   if (mu < 0 | sig < 0) stop("mu and sig need to be > 0")
@@ -48,12 +48,10 @@ dztpln <- function(x, mu, sig, log = FALSE, type1 = FALSE) {
 
 #' @rdname dztpln
 #' @export
-rztpln <- function(n, mu, sig, type1 = FALSE) {
+rztpln <- function(n, mu, sig, type1 = TRUE) {
   if (length(mu) > 1 | length(sig) > 1) 
      stop("Vectorization of parameters not implemented")
   if (mu < 0 | sig < 0) stop("mu and sig need to be > 0")
   if (sig > 15) stop("standard deviation > 15 in log-scale is too large")
-  if (type1) stop("type 1 ztpln random sampling is not implemented. 
-                  Please use type_1 = FALSE")
-  return(do_vec_rztpln(n, mu, sig))
+  if (type1) do_vec_rztpln1(n, mu, sig) else do_vec_rztpln2(n, mu, sig)
 }

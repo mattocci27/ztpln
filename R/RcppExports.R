@@ -29,11 +29,23 @@ do_rztpln <- function(mu, sig) {
     .Call(`_ztpln_do_rztpln`, mu, sig)
 }
 
-do_vec_rztpln <- function(n, mu, sig) {
-    .Call(`_ztpln_do_vec_rztpln`, n, mu, sig)
+do_rpln <- function(mu, sig) {
+    .Call(`_ztpln_do_rpln`, mu, sig)
 }
 
-do_vec2_rztpln <- function(n, mu, sig) {
-    .Call(`_ztpln_do_vec2_rztpln`, n, mu, sig)
+do_vec_rztpln2 <- function(n, mu, sig) {
+    .Call(`_ztpln_do_vec_rztpln2`, n, mu, sig)
+}
+
+do_vec2_rztpln2 <- function(n, mu, sig) {
+    .Call(`_ztpln_do_vec2_rztpln2`, n, mu, sig)
+}
+
+do_vec_rztpln1 <- function(n, mu, sig) {
+    .Call(`_ztpln_do_vec_rztpln1`, n, mu, sig)
+}
+
+do_vec2_rztpln1 <- function(n, mu, sig) {
+    .Call(`_ztpln_do_vec2_rztpln1`, n, mu, sig)
 }
 
