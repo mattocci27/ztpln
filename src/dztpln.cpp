@@ -20,20 +20,6 @@ double maxf(int x, double mu, double sig)
    return(z);
  };
 
-double maxf2(int x, double mu, double sig)
-{
-   double d,z, z2;
-   z = 0;
-   d = 100;
-   z2 = exp(z);
-   while (d > 0.00001) {
-     if (x - 1 - log(exp(z2) - 1) - 1 / sig * (z - mu)  > 0) z = z + d; else z = z - d;
-     d = d / 2;
-   }
-   return(z);
- };
-
-
 double upper(int x, double m, double mu, double sig)
 {
    double d, z, mf;
@@ -59,40 +45,6 @@ double lower(int x, double m, double mu, double sig)
    d = 10;
    while (d > 0.000001) {
       if ((x - 1) * z - exp(z) - 0.5 / sig * ((z - mu) * (z - mu)) - mf 
-          + log(1000000) > 0) 
-        z = z - d; else z = z + d;
-      d = d / 2;
-   }
-   return(z);
- };
-
-double lower2(int x, double m, double mu, double sig)
-{
-   double d, z, z2, m2,  mf;
-   m2 = exp(m);
-   mf = (x - 1) * m - log(exp(m2) - 1) - 0.5 / sig * ((m - mu) * (m - mu));
-   z = m - 20;
-   z2 = exp(z);
-   d = 10;
-   while (d > 0.000001) {
-      if ((x - 1) * z - log(exp(z2) -1) - 0.5 / sig * ((z - mu) * (z - mu)) - mf 
-          + log(1000000) > 0) 
-        z = z - d; else z = z + d;
-      d = d / 2;
-   }
-   return(z);
- };
-
-double upper2(int x, double m, double mu, double sig)
-{
-   double d, z, z2, m2,  mf;
-   m2 = exp(m);
-   mf = (x - 1) * m - log(exp(m2) - 1) - 0.5 / sig * ((m - mu) * (m - mu));
-   z = m + 20;
-   z2 = exp(z);
-   d = 10;
-   while (d > 0.000001) {
-      if ((x - 1) * z - log(exp(z2) -1) - 0.5 / sig * ((z - mu) * (z - mu)) - mf 
           + log(1000000) > 0) 
         z = z - d; else z = z + d;
       d = d / 2;
@@ -159,8 +111,7 @@ Rcpp::NumericVector do_dpln2(Rcpp::IntegerVector x, double mu, double sig){
     m = maxf(x[i], mu, sig);
     a = lower(x[i], m, mu, sig);
     b = upper(x[i], m, mu, sig);
-    /* exp(lambda) <= exp(709) */
-    if (m <= 6.565265 & m > -14.5) {
+    if (m <= 6.563856 & mu < 6.563856) {
       plnintegrand2 f2(x[i], mu, sig);
       double err_est;
       int err_code;
