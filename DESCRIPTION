@@ -18,7 +18,8 @@ Imports: Rcpp (>= 0.12.0),
   stats, 
   DistributionUtils,
   mixtools
-Suggests: knitr
+Suggests: knitr,
+  tidyverse
 LinkingTo: Rcpp (>= 0.12.0), 
   RcppEigen (>= 0.3.3.3.0), 
   RcppNumerical (>= 0.4-0)
