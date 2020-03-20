@@ -1,5 +1,7 @@
 # Zero Truncated Poisson Lognormal Distribution
 
+[![Build Status](https://travis-ci.org/mattocci27/ztpln.svg)](https://travis-ci.org/mattocci27/ztpln)
+
 **DISCLAIMER**: This is an experimental R package to generate Zero Truncated Poisson Lognormal Distribution. There are no help pages at the moment. Please be careful when you run the code.
 
 The type 1 zero truncated Poisson lognormal distribution uses the
