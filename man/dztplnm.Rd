@@ -5,9 +5,9 @@
 \alias{rztplnm}
 \title{The zero-truncated compund poisson-lognormal distributions mixture}
 \usage{
-dztplnm(x, mu, sig, theta, log = FALSE, type1 = FALSE)
+dztplnm(x, mu, sig, theta, log = FALSE, type1 = TRUE)
 
-rztplnm(n, mu, sig, theta, type1 = FALSE)
+rztplnm(n, mu, sig, theta, type1 = TRUE)
 }
 \arguments{
 \item{x}{vector of (non-negative integer) quantiles.}
@@ -41,7 +41,7 @@ For mathematical details, please see \code{vignette("ztpln")}
 \examples{
 rztplnm(n = 100, mu = c(0, 5), sig = c(1, 2), theta = c(0.2, 0.8))
 dztplnm(x = 1:100, mu = c(0, 5), sig = c(1, 2), theta = c(0.2, 0.8))
-dztplnm(x = 1:100, mu = c(0, 5), sig = c(1, 2), theta = c(0.2, 0.8), type1 = TRUE)
+dztplnm(x = 1:100, mu = c(0, 5), sig = c(1, 2), theta = c(0.2, 0.8), type1 = FALSE)
 }
 \seealso{
 \code{\link{dztpln}}

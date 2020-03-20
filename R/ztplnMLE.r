@@ -29,11 +29,11 @@
 #' ztplnMLE(y)
 #' @export
 ztplnMLE <- function(n,
-                     lower_mu = -5,
+                     lower_mu = 0,
                      upper_mu = log(max(n)),
                      lower_sig = 0.001,
                      upper_sig = 10,
-                     type1 = FALSE) {
+                     type1 = TRUE) {
 
   n <- n[n > 0]
   # set initial values using medians and sd for fast convergence
@@ -45,7 +45,7 @@ ztplnMLE <- function(n,
     if (type1) {
       lik <- do_dztpln(n, mu, sig)
     } else lik <- do_dztpln2(n, mu, sig)
-    return(-sum(lik, na.rm = TRUE))
+    return(-sum(log(lik), na.rm = TRUE))
   }
   # faster than Nelder-Mead and BFGS in optim
   fit <- try(nlminb(params, # initial parameters

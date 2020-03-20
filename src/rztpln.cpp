@@ -33,7 +33,8 @@ Rcpp::IntegerVector do_vec_rztpln2(int n, double mu, double sig) {
 }
 
 // [[Rcpp::export]]
-Rcpp::IntegerVector do_vec2_rztpln2(int n, Rcpp::NumericVector mu, Rcpp::NumericVector sig) {
+Rcpp::IntegerVector do_vec2_rztpln2(int n, Rcpp::NumericVector mu, 
+    Rcpp::NumericVector sig) {
   Rcpp::IntegerVector y(n);
   for (int i = 0; i < n; i++) {
     y(i)  = do_rztpln(mu(i), sig(i));
@@ -56,7 +57,8 @@ Rcpp::IntegerVector do_vec_rztpln1(int n, double mu, double sig) {
 }
 
 // [[Rcpp::export]]
-Rcpp::IntegerVector do_vec2_rztpln1(int n, Rcpp::NumericVector mu, Rcpp::NumericVector sig) {
+Rcpp::IntegerVector do_vec2_rztpln1(int n, Rcpp::NumericVector mu, 
+    Rcpp::NumericVector sig) {
   Rcpp::IntegerVector y(0);
   while (y.size() < n) {
     for (int i = y.size(); i < n; i++) {

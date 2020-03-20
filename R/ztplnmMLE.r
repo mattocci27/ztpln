@@ -41,7 +41,7 @@ ztplnmMLE <- function(n,
                       upper_sig = rep(10, K),
                       lower_theta = rep(0.001, K),
                       upper_theta = rep(0.999, K),
-                      type1 = FALSE,
+                      type1 = TRUE,
                       message = FALSE) {
 
   if (K == 1) {warning("`ztplnMLE` is faster for K = 1")}
@@ -72,7 +72,7 @@ ztplnmMLE <- function(n,
     if (type1) {
       lik <- do_dztplnm(n, mu, sig, theta)
     } else lik <- do_dztplnm2(n, mu, sig, theta)
-    return(-sum(lik, na.rm = TRUE))
+    return(-sum(log(lik), na.rm = TRUE))
   }
 
   fit <- try(nlminb(start = params, # inital parameters

@@ -6,32 +6,6 @@
 
 using namespace Rcpp;
 
-// do_dpln
-Rcpp::NumericVector do_dpln(Rcpp::IntegerVector x, double mu, double sig);
-RcppExport SEXP _ztpln_do_dpln(SEXP xSEXP, SEXP muSEXP, SEXP sigSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< Rcpp::IntegerVector >::type x(xSEXP);
-    Rcpp::traits::input_parameter< double >::type mu(muSEXP);
-    Rcpp::traits::input_parameter< double >::type sig(sigSEXP);
-    rcpp_result_gen = Rcpp::wrap(do_dpln(x, mu, sig));
-    return rcpp_result_gen;
-END_RCPP
-}
-// do_dpln2
-Rcpp::NumericVector do_dpln2(Rcpp::IntegerVector x, double mu, double sig);
-RcppExport SEXP _ztpln_do_dpln2(SEXP xSEXP, SEXP muSEXP, SEXP sigSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< Rcpp::IntegerVector >::type x(xSEXP);
-    Rcpp::traits::input_parameter< double >::type mu(muSEXP);
-    Rcpp::traits::input_parameter< double >::type sig(sigSEXP);
-    rcpp_result_gen = Rcpp::wrap(do_dpln2(x, mu, sig));
-    return rcpp_result_gen;
-END_RCPP
-}
 // do_dztpln
 Rcpp::NumericVector do_dztpln(Rcpp::IntegerVector x, double mu, double sig);
 RcppExport SEXP _ztpln_do_dztpln(SEXP xSEXP, SEXP muSEXP, SEXP sigSEXP) {
@@ -164,8 +138,6 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_ztpln_do_dpln", (DL_FUNC) &_ztpln_do_dpln, 3},
-    {"_ztpln_do_dpln2", (DL_FUNC) &_ztpln_do_dpln2, 3},
     {"_ztpln_do_dztpln", (DL_FUNC) &_ztpln_do_dztpln, 3},
     {"_ztpln_do_dztpln2", (DL_FUNC) &_ztpln_do_dztpln2, 3},
     {"_ztpln_do_dztplnm", (DL_FUNC) &_ztpln_do_dztplnm, 4},

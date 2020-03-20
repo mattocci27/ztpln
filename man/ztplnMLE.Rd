@@ -6,11 +6,11 @@
 \usage{
 ztplnMLE(
   n,
-  lower_mu = -5,
+  lower_mu = 0,
   upper_mu = log(max(n)),
   lower_sig = 0.001,
   upper_sig = 10,
-  type1 = FALSE
+  type1 = TRUE
 )
 }
 \arguments{

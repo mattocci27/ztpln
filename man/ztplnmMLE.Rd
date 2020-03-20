@@ -13,7 +13,7 @@ ztplnmMLE(
   upper_sig = rep(10, K),
   lower_theta = rep(0.001, K),
   upper_theta = rep(0.999, K),
-  type1 = FALSE,
+  type1 = TRUE,
   message = FALSE
 )
 }

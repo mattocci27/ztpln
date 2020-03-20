@@ -18,10 +18,10 @@ Run install2.r --error \
 
 COPY .radian_profile /home/rstudio/.radian_profile 
 
-RUN mkdir -p /home/rstudio/.R \
-  && echo 'CXXFLAGS=-O3 -mtune=native -fPIC -Wno-ignored-attributes' >> /home/rstudio/.R/Makevars
 #RUN mkdir -p /home/rstudio/.R \
-#  && echo 'CXXFLAGS=-O3 -mtune=native -fPIC' >> /home/rstudio/.R/Makevars
+#  && echo 'CXXFLAGS=-O3 -mtune=native -fPIC -Wno-ignored-attributes' >> /home/rstudio/.R/Makevars
+RUN mkdir -p /home/rstudio/.R \
+  && echo 'CXXFLAGS=-O3 -mtune=native -fPIC' >> /home/rstudio/.R/Makevars
 
 ENV HOME=/home/rstudio
 WORKDIR $HOME

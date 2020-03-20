@@ -5,9 +5,9 @@
 \alias{rztpln}
 \title{The zero-truncated compund poisson-lognormal distributions}
 \usage{
-dztpln(x, mu, sig, log = FALSE, type1 = FALSE)
+dztpln(x, mu, sig, log = FALSE, type1 = TRUE)
 
-rztpln(n, mu, sig, type1 = FALSE)
+rztpln(n, mu, sig, type1 = TRUE)
 }
 \arguments{
 \item{x}{vector of (non-negative integer) quantiles.}
@@ -42,8 +42,8 @@ type 2 ZTPLN truncates zero based on zero-truncated Poisson distribution.
 For mathematical details, please see \code{vignette("ztpln")}
 }
 \examples{
-rztpln(n = 10, mu = 0, sig = 1, type1 = FALSE)
-rztpln(n = 10, mu = 6, sig = 4, type1 = FALSE)
+rztpln(n = 10, mu = 0, sig = 1, type1 = TRUE)
+rztpln(n = 10, mu = 6, sig = 4, type1 = TRUE)
 dztpln(x = 1:5, mu = 1, sig = 2)
 }
 \references{
