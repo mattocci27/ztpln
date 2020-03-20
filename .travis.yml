@@ -13,6 +13,9 @@ before_install:
 install:
   - ./run.sh install_aptget libgsl0-dev r-cran-rcpp r-cran-mass r-cran-rcppgsl r-cran-tweedie r-cran-statmod r-cran-testthat
 
+before_script: 
+  - Rscript -e "install.packages(c('Rcpp', 'RcppEigen', 'RcppNumerical', 'DistributionUtils', 'mixtools', 'knitr', 'tidyverse'), repos='https://cloud.r-project.org/')"
+
 script:
   - ./run.sh run_tests
 
@@ -23,5 +26,4 @@ notifications:
   email:
     on_success: change
     on_failure: change
-
 
