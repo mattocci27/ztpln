@@ -10,3 +10,6 @@ kitematic/*
 doc
 Meta
 cran-comments.md
+old/*
+build.rmd
+INPUT.md
