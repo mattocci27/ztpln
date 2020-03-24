@@ -5,3 +5,11 @@
 src/*.o
 src/*.so
 src/*.dll
+test.rmd
+kitematic/*
+doc
+Meta
+cran-comments.md
+old/*
+build.rmd
+INPUT.md
