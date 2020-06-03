@@ -16,3 +16,5 @@ kitematic/*
 ^\.radian
 ^doc$
 ^Meta$
+.travis.yml
+ztpln-manual.tex

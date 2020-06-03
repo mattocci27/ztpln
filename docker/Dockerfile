@@ -1,11 +1,4 @@
-FROM rocker/verse
-
-Run apt update && apt install -y python-pip fd-find exa \
-  && pip install -U radian \
-  && rm -rf /tmp/* \
-  && apt autoremove -y \
-  && apt autoclean -y \
-  && rm -rf /var/lib/apt/lists/*
+FROM mattocci/myenv:4.0.0
 
 Run install2.r --error \
       --deps TRUE \
@@ -16,12 +9,19 @@ Run install2.r --error \
       RcppNumerical \
       RcppArmadillo
 
-COPY .radian_profile /home/rstudio/.radian_profile 
-
 #RUN mkdir -p /home/rstudio/.R \
 #  && echo 'CXXFLAGS=-O3 -mtune=native -fPIC -Wno-ignored-attributes' >> /home/rstudio/.R/Makevars
 RUN mkdir -p /home/rstudio/.R \
   && echo 'CXXFLAGS=-O3 -mtune=native -fPIC' >> /home/rstudio/.R/Makevars
+
+RUN tlmgr update --self \
+  && tlmgr install latex-bin luatex xetex \
+  && tlmgr install ae bibtex inconsolata listings metafont mfware parskip pdfcrop tex tools url xkeyval amsfonts
+
+RUN chown -R rstudio:staff /opt/texlive \
+  && chown -R rstudio:staff /usr/local/texlive \
+  && chmod -R 777 /opt/texlive \
+  && chmod -R 777 /usr/local/texlive
 
 ENV HOME=/home/rstudio
 WORKDIR $HOME
