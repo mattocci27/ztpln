@@ -14,7 +14,8 @@
 #' @param x	vector of (non-negative integer) quantiles.
 #' @param log logical; if TRUE, probabilities p are given as log(p).
 #' @param type1 logical; if TRUE, Use type 1 ztpln else use type 2.  
-#' @return dpois gives the (log) density, ppois gives the (log) distribution
+#' @return dztplnm gives the (log) density and rztplnm generates
+#' random variates.
 #' function, qpois gives the quantile function, and rpois generates random
 #' deviates.
 #' @seealso \code{\link{dztpln}}

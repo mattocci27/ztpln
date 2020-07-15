@@ -1,7 +1,5 @@
 ---
 title: "Zero Truncated Poisson Lognormal Distribution"
-author: "Masatoshi Katabuchi"
-date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Introduction to ztpln}
@@ -96,34 +94,55 @@ for ZTPLN type 2.
 
 ## Examples
 
-````{r, eval = T}
+### Random variables
 
+We can generate ZTPLN random variables.
+
+````{r, eval = T}
 library(tidyverse)
 set.seed(123)
-#rztpln(n = 10, mu = 0, sig = 1)
 
-#rztpln(n = 10, mu = 6, sig = 4)
+rztpln(n = 10, mu = 0, sig = 1)
 
-#hist(log(rztplnm(n = 100, mu = c(0, 8), sig = c(0.5, 0.5), theta = c(0.2, 0.8))))
+rztpln(n = 10, mu = 6, sig = 4)
+```
 
-#y <- rztpln(n = 10, mu = 2, sig = 5, type1 = TRUE)
-#sum(dztpln(y, mu = 2, sig = 5, log = TRUE))
-#sum(dztpln(y, mu = 2, sig = 5, log = TRUE, type1 = TRUE))
-#
-#y2 <- rztpln(n = 10, mu = 2, sig = 5, type1 = FALSE)
-#sum(dztpln(y2, mu = 2, sig = 5, log = TRUE))
-#sum(dztpln(y2, mu = 2, sig = 5, log = TRUE, type1 = TRUE))
-#
-#dztpln(2000, mu = 2, sig = 5, log = TRUE, type1 = TRUE)
-#dztpln(2000, mu = 2, sig = 5, log = TRUE, type1 = FALSE)
+We can also generate mixture of ZTPLN random variables.
 
-dztpln(800, mu = 2, sig = 6, type1 = TRUE, log = T) - 
-dztpln(800, mu = 2, sig = 6, type1 = FALSE, log = T)
+````{r, eval = T}
+rztplnm(n = 100, 
+  mu = c(0, 4), 
+  sig = c(0.5, 0.5), 
+  theta = c(0.2, 0.8)) %>%
+  log %>% hist(main = "", xlab = "k")
+```
 
-dztpln(1010, mu = 2, sig = 6, type1 = TRUE, log = T) - 
-dztpln(1010, mu = 2, sig = 6, type1 = FALSE, log = T)
+### Maximum likelihood estimation 
 
+Type 1 model (`dztpln(..., type1 = TRUE)`) fits better for type 1 random variables (`rztpln(..., type1 = TRUE)`).
 
+````{r, eval = T}
+y <- rztpln(n = 100, mu = 2, sig = 5, type1 = TRUE)
+sum(dztpln(y, mu = 2, sig = 5, log = TRUE, type1 = TRUE))
+sum(dztpln(y, mu = 2, sig = 5, log = TRUE, type1 = FALSE))
+```
+
+Type 2 model (`dztpln(..., type1 = FALSE)`) fits better for type 2 random variables (`rztpln(..., type1 = FALSE)`).
+
+````{r, eval = T}
+y2 <- rztpln(n = 100, mu = 2, sig = 5, type1 = FALSE)
+sum(dztpln(y2, mu = 2, sig = 5, log = TRUE, type1 = TRUE))
+sum(dztpln(y2, mu = 2, sig = 5, log = TRUE, type1 = FALSE))
+
+```
+
+### Probability density plots
+
+Let’s consider a simple example where random variables follows the same parameters of type 1 and type 2 ZTPLN. We define two different sets of random variables, $\mathcal{PLN}_{zt}(k ;1, 2)$ and $\mathcal{PLN}_{zt2}(k ; 1, 2)$.
+
+In this example, when $k$ is small, type 2 ZTPLN shows greater likelihood.
+
+```{r}
 k1 <- 1
 k <- 1000
 dat <- tibble(type1 = dztpln(k1:k, mu = 1, sig = 2, type1 = TRUE),
@@ -135,51 +154,25 @@ ggplot(dat %>% filter(x <= 10), aes(x = x, y = y, col = type)) +
   geom_point() +
   geom_line() +
   scale_y_log10() +
+  xlab("k") +
+  ylab("Likelihood") +
   theme_bw()
+```
 
+When $k$ is large, type 1 ZTPLN shows greater likelihood.
+
+```{r}
 ggplot(dat, aes(x = x, y = y, col = type)) +
   geom_point() +
   geom_line() +
   scale_y_log10() +
+  xlab("k") +
+  ylab("Likelihood") +
   theme_bw()
-
-dat2 <- tibble(type1 = dztpln(k1:k, mu = 8, sig = 4, type1 = TRUE),
-         type2 = dztpln(k1:k, mu = 8, sig = 4, type1 = FALSE),
-         x = k1:k) %>%
-  pivot_longer(-x, names_to = "type", values_to = "y")
-
-ggplot(dat2 %>% filter(x <= 10), aes(x = x, y = y, col = type)) +
-  geom_point() +
-  geom_line() +
-  scale_y_log10() +
-  theme_bw()
-
-ggplot(dat2, aes(x = x, y = y, col = type)) +
-  geom_point() +
-  geom_line() +
-  scale_y_log10() +
-  theme_bw()
-
-dat3 <- tibble(type1 = dztpln(k1:k, mu = 5, sig = 0.8, type1 = TRUE),
-         type2 = dztpln(k1:k, mu = 5, sig = 0.8, type1 = FALSE),
-         x = k1:k) %>%
-  pivot_longer(-x, names_to = "type", values_to = "y")
-
-ggplot(dat3 %>% filter(x <= 10), aes(x = x, y = y, col = type)) +
-  geom_point() +
-  geom_line() +
-  scale_y_log10() +
-  theme_bw()
-
-ggplot(dat3, aes(x = x, y = y, col = type)) +
-  geom_point() +
-  geom_line() +
-  scale_y_log10() +
-  theme_bw()
-
-````
+```
 
 ## Reference
 
-M. G. Bulmer. 1974. On Fitting the Poisson Lognormal Distribution to Species-Abundance Data. Biometrics 30: 101-110 [doi:10.2307/2529621](https://www.jstor.org/stable/2529621?origin=crossref&seq=1#metadata_info_tab_contents)
+Bulmer, M. G. 1974. On Fitting the Poisson Lognormal Distribution to Species-Abundance Data. Biometrics 30:101-110. [doi:10.2307/2529621](https://www.jstor.org/stable/2529621?origin=crossref&seq=1#metadata_info_tab_contents)
 
+Inouye, D., E. Yang, G. Allen, and P. Ravikumar. 2017. A Review of Multivariate Distributions for Count Data Derived from the Poisson Distribution. Wiley interdisciplinary reviews. Computational statistics 9:e1398. [doi:10.1002/wics.1398](https://onlinelibrary.wiley.com/doi/full/10.1002/wics.1398)

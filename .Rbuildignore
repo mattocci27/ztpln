@@ -16,5 +16,7 @@ kitematic/*
 ^\.radian
 ^doc$
 ^Meta$
+ecology.csl
+ref*
 .travis.yml
-ztpln-manual.tex
+*.pdf

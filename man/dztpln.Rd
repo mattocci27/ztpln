@@ -35,6 +35,7 @@ A compound Poisson-lognormal distribution is a Poisson probability
 distribution where its parameter \eqn{\lambda} is a random variable with
 lognormal distribution, that is to say \eqn{log\lambda} are normally
 distributed with mean \eqn{\mu} and variance \eqn{\sigma^2} (Bulmer 1974).
+The zero-truncated Poisson-lognormal distribution can be derived from a
 zero-truncated Poisson distribution.
 
 Type 1 ZTPLN truncates zero based on Poisson-lognormal distribution and
@@ -47,9 +48,7 @@ rztpln(n = 10, mu = 6, sig = 4, type1 = TRUE)
 dztpln(x = 1:5, mu = 1, sig = 2)
 }
 \references{
-M. G. Bulmer. 1974. On Fitting the Poisson Lognormal
-Distribution to Species-Abundance Data. Biometrics 30: 101-110
-\href{https://www.jstor.org/stable/2529621?origin=crossref&seq=1#metadata_info_tab_contents}{doi:10.2307/2529621}
+Bulmer, M. G. 1974. On Fitting the Poisson Lognormal Distribution to Species-Abundance Data. Biometrics 30:101-110. \href{https://www.jstor.org/stable/2529621?origin=crossref&seq=1#metadata_info_tab_contents}{doi:10.2307/2529621}
 }
 \seealso{
 \code{\link{dztplnm}}

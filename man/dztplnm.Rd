@@ -25,7 +25,8 @@ rztplnm(n, mu, sig, theta, type1 = TRUE)
 \item{n}{number of random values to return.}
 }
 \value{
-dpois gives the (log) density, ppois gives the (log) distribution
+dztplnm gives the (log) density and rztplnm generates
+random variates.
 function, qpois gives the quantile function, and rpois generates random
 deviates.
 }

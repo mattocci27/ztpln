@@ -1,4 +1,4 @@
-FROM mattocci/myenv:4.0.0
+FROM rocker/verse:4.0.2
 
 Run install2.r --error \
       --deps TRUE \
@@ -22,6 +22,3 @@ RUN chown -R rstudio:staff /opt/texlive \
   && chown -R rstudio:staff /usr/local/texlive \
   && chmod -R 777 /opt/texlive \
   && chmod -R 777 /usr/local/texlive
-
-ENV HOME=/home/rstudio
-WORKDIR $HOME

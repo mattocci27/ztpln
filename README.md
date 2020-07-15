@@ -2,8 +2,6 @@
 
 [![Build Status](https://travis-ci.org/mattocci27/ztpln.svg)](https://travis-ci.org/mattocci27/ztpln)
 
-**DISCLAIMER**: This is an experimental R package to generate Zero Truncated Poisson Lognormal Distribution. There are no help pages at the moment. Please be careful when you run the code.
-
 The type 1 zero truncated Poisson lognormal distribution uses the
 conditional probability distribution of Poisson lognormal and the type 2 zero truncated Poisson lognormal distribution uses the zero truncated Poisson distribution. Please see `vignette("ztpln")` for details.
 
@@ -39,4 +37,6 @@ rztpln(n = 10, mu = 6, sig = 4)
 
 ## Reference
 
-M. G. Bulmer. 1974. On Fitting the Poisson Lognormal Distribution to Species-Abundance Data. Biometrics 30: 101-110 [doi:10.2307/2529621](https://www.jstor.org/stable/2529621?origin=crossref&seq=1#metadata_info_tab_contents)
+Bulmer, M. G. 1974. On Fitting the Poisson Lognormal Distribution to Species-Abundance Data. Biometrics 30:101-110. [doi:10.2307/2529621](https://www.jstor.org/stable/2529621?origin=crossref&seq=1#metadata_info_tab_contents)
+
+Inouye, D., E. Yang, G. Allen, and P. Ravikumar. 2017. A Review of Multivariate Distributions for Count Data Derived from the Poisson Distribution. Wiley interdisciplinary reviews. Computational statistics 9:e1398.[doi:10.1002/wics.1398](https://onlinelibrary.wiley.com/doi/full/10.1002/wics.1398)
