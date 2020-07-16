@@ -13,7 +13,8 @@ Run install2.r --error \
       sads \
       DistributionUtils \
       RcppEigen \
-      RcppNumerical
+      RcppNumerical \
+      rhub
 
 #RUN mkdir -p /home/rstudio/.R \
 #  && echo 'CXXFLAGS=-O3 -mtune=native -fPIC -Wno-ignored-attributes' >> /home/rstudio/.R/Makevars
@@ -29,7 +30,7 @@ RUN chown -R ${USER_NAME}:staff /opt/texlive \
   && chmod -R 777 /opt/texlive \
   && chmod -R 777 /usr/local/texlive
 
-USER ${USER_NAME}
+#USER ${USER_NAME}
 
 RUN mkdir -p ${HOME} \
   &&  chown -R ${USER_NAME}:${USER_NAME} ${HOME}
