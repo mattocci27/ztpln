@@ -19,7 +19,9 @@ Imports: Rcpp (>= 0.12.0),
   DistributionUtils,
   mixtools
 Suggests: knitr,
-  tidyverse
+  ggplot2,
+  tidyr,
+  dplyr
 LinkingTo: Rcpp (>= 0.12.0), 
   RcppEigen (>= 0.3.3.3.0), 
   RcppNumerical (>= 0.4-0)

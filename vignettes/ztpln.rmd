@@ -94,12 +94,14 @@ for ZTPLN type 2.
 
 ## Examples
 
-### Random variables
+### Random variates
 
-We can generate ZTPLN random variables.
+We can generate ZTPLN random variates.
 
 ````{r, eval = T}
-library(tidyverse)
+library(dplyr)
+library(tidyr)
+library(ggplot2)
 set.seed(123)
 
 rztpln(n = 10, mu = 0, sig = 1)
@@ -107,7 +109,7 @@ rztpln(n = 10, mu = 0, sig = 1)
 rztpln(n = 10, mu = 6, sig = 4)
 ```
 
-We can also generate mixture of ZTPLN random variables.
+We can also generate mixture of ZTPLN random variates.
 
 ````{r, eval = T}
 rztplnm(n = 100, 
@@ -119,7 +121,7 @@ rztplnm(n = 100,
 
 ### Maximum likelihood estimation 
 
-Type 1 model (`dztpln(..., type1 = TRUE)`) fits better for type 1 random variables (`rztpln(..., type1 = TRUE)`).
+Type 1 model (`dztpln(..., type1 = TRUE)`) fits better for type 1 random variates (`rztpln(..., type1 = TRUE)`).
 
 ````{r, eval = T}
 y <- rztpln(n = 100, mu = 2, sig = 5, type1 = TRUE)
@@ -127,7 +129,7 @@ sum(dztpln(y, mu = 2, sig = 5, log = TRUE, type1 = TRUE))
 sum(dztpln(y, mu = 2, sig = 5, log = TRUE, type1 = FALSE))
 ```
 
-Type 2 model (`dztpln(..., type1 = FALSE)`) fits better for type 2 random variables (`rztpln(..., type1 = FALSE)`).
+Type 2 model (`dztpln(..., type1 = FALSE)`) fits better for type 2 random variates (`rztpln(..., type1 = FALSE)`).
 
 ````{r, eval = T}
 y2 <- rztpln(n = 100, mu = 2, sig = 5, type1 = FALSE)
@@ -138,7 +140,7 @@ sum(dztpln(y2, mu = 2, sig = 5, log = TRUE, type1 = FALSE))
 
 ### Probability density plots
 
-Let’s consider a simple example where random variables follows the same parameters of type 1 and type 2 ZTPLN. We define two different sets of random variables, $\mathcal{PLN}_{zt}(k ;1, 2)$ and $\mathcal{PLN}_{zt2}(k ; 1, 2)$.
+Let’s consider a simple example where random variates follows the same parameters of type 1 and type 2 ZTPLN. We define two different sets of random variates, $\mathcal{PLN}_{zt}(k ;1, 2)$ and $\mathcal{PLN}_{zt2}(k ; 1, 2)$.
 
 In this example, when $k$ is small, type 2 ZTPLN shows greater likelihood.
 

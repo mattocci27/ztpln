@@ -14,3 +14,4 @@ old/*
 build.rmd
 INPUT.md
 *.pdf
+*.tar.gz

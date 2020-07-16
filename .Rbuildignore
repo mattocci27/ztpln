@@ -1,6 +1,5 @@
 ^\.DS_Store$
 ^\.history$
-^\.pdf$
 .git
 .gitignore
 ^build\.txt$
@@ -19,4 +18,5 @@ kitematic/*
 ecology.csl
 ref*
 .travis.yml
-*.pdf
+.pdf$
+.tar.gz$
