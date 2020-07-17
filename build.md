@@ -70,6 +70,9 @@ library(rhub)
 validate_email("mattocci27@gmail.com")
 check_on_linux()
 
+check_on_macos()
+
 devtools::check(".", manual = TRUE)
+
 ```
 
