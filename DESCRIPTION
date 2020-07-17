@@ -2,7 +2,7 @@ Type: Package
 Package: ztpln
 Title: Zero-truncated Poisson Lognormal Distribution
 Version: 0.1.0
-Date: 2020-07-15
+Date: 2020-07-17
 Author: Masatoshi Katabuchi
 Maintainer: Masatoshi Katabuchi <mattocci27@gmail.com>
 Description: Functions for obtaining the density, random variates 
