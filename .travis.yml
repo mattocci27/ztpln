@@ -6,6 +6,17 @@ sudo: required
 
 dist: bionic
 
+jobs:
+  include:
+    #- name: r-3.5
+    #  env: R_VERSION="3.5"
+    - name: r-4.0
+      env: R_VERSION="4.0"
+
+env:
+  global:
+    - RunAllRcppAnnoyTests="yes"
+
 before_install:
   - curl -OLs https://eddelbuettel.github.io/r-travis/run.sh && chmod 0755 run.sh
   - ./run.sh bootstrap
@@ -14,7 +25,7 @@ install:
   - ./run.sh install_aptget libgsl0-dev r-cran-rcpp r-cran-mass r-cran-rcppgsl r-cran-tweedie r-cran-statmod r-cran-testthat
 
 before_script: 
-  - Rscript -e "install.packages(c('Rcpp', 'RcppEigen', 'RcppNumerical', 'DistributionUtils', 'mixtools', 'knitr', 'tidyverse'), repos='https://cloud.r-project.org/')"
+  - Rscript -e "install.packages(c('Rcpp', 'RcppEigen', 'RcppNumerical', 'DistributionUtils', 'mixtools', 'knitr', 'ggplot2', 'dplyr', 'tidyr'), repos='https://cloud.r-project.org/')"
 
 script:
   - ./run.sh run_tests

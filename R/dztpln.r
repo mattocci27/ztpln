@@ -32,10 +32,10 @@
 #' dztpln(x = 1:5, mu = 1, sig = 2)
 #' @export
 dztpln <- function(x, mu, sig, log = FALSE, type1 = TRUE) {
-	if (length(mu) > 1 | length(sig) > 1)
+  if (length(mu) > 1 | length(sig) > 1)
     stop("Vectorization of parameters not implemented")
   if (mu < 0 | sig < 0) stop("mu and sig need to be > 0")
-	if (any(!DistributionUtils::is.wholenumber(x))) warning("non integer values in x")
+  if (any(!DistributionUtils::is.wholenumber(x))) warning("non integer values in x")
   if (min(x) <= 0) warning("zero in x")
   x <- x[x > 0]
   if (type1) {

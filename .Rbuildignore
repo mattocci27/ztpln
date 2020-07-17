@@ -1,5 +1,5 @@
 ^\.DS_Store$
-^\.history$
+.Rhistory
 .git
 .gitignore
 ^build\.txt$
