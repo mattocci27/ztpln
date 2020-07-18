@@ -20,6 +20,9 @@
 #' @import stats
 #' @import DistributionUtils
 #' @import mixtools
+#' @import colorspace
+#' @import DBI
+#' @import lubridate
 
 #' @useDynLib ztpln, .registration=TRUE
 NULL
