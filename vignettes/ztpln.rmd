@@ -152,7 +152,7 @@ dat <- tibble(type1 = dztpln(k1:k, mu = 1, sig = 2, type1 = TRUE),
          x = k1:k) %>%
   pivot_longer(-x, names_to = "type", values_to = "y")
 
-ggplot(dat %>% filter(x <= 10), aes(x = x, y = y, col = type)) +
+ggplot(dat %>% dplyr::filter(x <= 10), aes(x = x, y = y, col = type)) +
   geom_point() +
   geom_line() +
   scale_y_log10() +
