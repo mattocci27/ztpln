@@ -1,9 +1,5 @@
-// [[Rcpp::depends(RcppEigen)]]
-// [[Rcpp::depends(RcppNumerical)]]
 #include <Rcpp.h>
 #include <Rmath.h>
-#include <RcppEigen.h>
-#include <RcppNumerical.h>
 #include <algorithm>  // remove and remove_if
 using namespace Rcpp;
 

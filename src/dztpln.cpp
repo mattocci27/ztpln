@@ -3,9 +3,8 @@ Grøtan Grotan and Steinar Engen 2007
 Masatoshi Katabuchi 2020
 */
 
-// [[Rcpp::depends(RcppEigen)]]
-// [[Rcpp::depends(RcppNumerical)]]
 #include <RcppNumerical.h>
+#include <RcppEigen.h>
 using namespace Numer;
 
 double maxf(int x, double mu, double sig)
@@ -57,8 +56,8 @@ class plnintegrand: public Func
 {
 private:
   int x;
-  double sig;
   double mu;
+  double sig;
 public:
   plnintegrand(int x_, double mu_, double sig_) : x(x_), mu(mu_), sig(sig_){}
   double operator()(const double& z) const {
@@ -72,8 +71,8 @@ class plnintegrand2: public Func
 {
 private:
   int x;
-  double sig;
   double mu;
+  double sig;
 public:
   plnintegrand2(int x_, double mu_, double sig_) : x(x_), mu(mu_), sig(sig_){}
   double operator()(const double& z) const {

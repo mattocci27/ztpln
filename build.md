@@ -60,7 +60,14 @@ cp ../ztpln_0.1.0.tar.gz .
 install.packages("ztpln_0.1.0.tar.gz")
 ```
 
-4. Check for Windows
+4. Check
+
+```
+R CMD check --as-cran ztpln_0.1.0.tar.gz
+```
+
+
+5. Check for Windows
 
 ```{r}
 devtools::check_win_release()
@@ -68,7 +75,8 @@ devtools::check_win_devel()
 devtools::check_win_oldrelease()
 ```
 
-5.  rhub
+6.  rhub
+
 ```{r}
 library(rhub)
 validate_email("mattocci27@gmail.com")

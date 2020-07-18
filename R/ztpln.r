@@ -15,8 +15,6 @@
 "_PACKAGE"
 
 #' @import Rcpp
-#' @import RcppEigen
-#' @import RcppNumerical
 #' @import stats
 #' @import DistributionUtils
 #' @import mixtools
