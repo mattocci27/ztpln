@@ -48,7 +48,7 @@ rztpln(n = 10, mu = 6, sig = 4, type1 = TRUE)
 dztpln(x = 1:5, mu = 1, sig = 2)
 }
 \references{
-Bulmer, M. G. 1974. On Fitting the Poisson Lognormal Distribution to Species-Abundance Data. Biometrics 30:101-110. \href{https://www.jstor.org/stable/2529621?origin=crossref&seq=1#metadata_info_tab_contents}{doi:10.2307/2529621}
+Bulmer, M. G. 1974. On Fitting the Poisson Lognormal Distribution to Species-Abundance Data. Biometrics 30:101-110. \href{https://www.jstor.org/stable/2529621}{doi:10.2307/2529621}
 }
 \seealso{
 \code{\link{dztplnm}}
