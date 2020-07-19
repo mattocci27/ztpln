@@ -8,8 +8,8 @@
 #' For mathematical details, please see `vignette("ztpln")`
 #'
 #' @param n number of random values to return.
-#' @param mu vector of mean of lognormal distribution in sample 1.
-#' @param sig vector mean of lognormal distribution in sample 1.
+#' @param mu vector of mean of lognormal distribution in sample.
+#' @param sig vector standard deviation of lognormal distribution in sample.
 #' @param theta vector of mixture weights
 #' @param x	vector of (non-negative integer) quantiles.
 #' @param log logical; if TRUE, probabilities p are given as log(p).

@@ -17,7 +17,7 @@
 #' @param n number of random values to return.
 #' @param x	vector of (non-negative integer) quantiles.
 #' @param mu mean of lognormal distribution.
-#' @param sig mean of lognormal distribution.
+#' @param sig standard deviation of lognormal distribution.
 #' @param log logical; if TRUE, probabilities p are given as log(p).
 #' @param type1 logical; if TRUE, Use type 1 ztpln else use type 2.  
 #' @return dztpln gives the (log) density and rztpln generates
@@ -34,7 +34,7 @@
 dztpln <- function(x, mu, sig, log = FALSE, type1 = TRUE) {
   if (length(mu) > 1 | length(sig) > 1)
     stop("Vectorization of parameters not implemented")
-  if (mu < 0 | sig < 0) stop("mu and sig need to be > 0")
+  if (sig < 0) stop("sig needs to be > 0")
   if (any(!DistributionUtils::is.wholenumber(x))) warning("non integer values in x")
   if (min(x) <= 0) warning("zero in x")
   x <- x[x > 0]
@@ -49,7 +49,7 @@ dztpln <- function(x, mu, sig, log = FALSE, type1 = TRUE) {
 rztpln <- function(n, mu, sig, type1 = TRUE) {
   if (length(mu) > 1 | length(sig) > 1) 
      stop("Vectorization of parameters not implemented")
-  if (mu < 0 | sig < 0) stop("mu and sig need to be > 0")
+  if (sig < 0) stop("sig needs to be > 0")
   if (sig > 15) stop("standard deviation > 15 in log-scale is too large")
   if (type1) do_vec_rztpln1(n, mu, sig) else do_vec_rztpln2(n, mu, sig)
 }

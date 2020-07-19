@@ -14,7 +14,7 @@ rztpln(n, mu, sig, type1 = TRUE)
 
 \item{mu}{mean of lognormal distribution.}
 
-\item{sig}{mean of lognormal distribution.}
+\item{sig}{standard deviation of lognormal distribution.}
 
 \item{log}{logical; if TRUE, probabilities p are given as log(p).}
 
