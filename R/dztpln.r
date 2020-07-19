@@ -22,7 +22,7 @@
 #' @param type1 logical; if TRUE, Use type 1 ztpln else use type 2.  
 #' @return dztpln gives the (log) density and rztpln generates
 #' random variates.
-#' @references Bulmer, M. G. 1974. On Fitting the Poisson Lognormal Distribution to Species-Abundance Data. Biometrics 30:101-110. [doi:10.2307/2529621](https://www.jstor.org/stable/2529621)
+#' @references Bulmer, M. G. 1974. On Fitting the Poisson Lognormal Distribution to Species-Abundance Data. Biometrics 30:101-110.
 #'
 #' @seealso \code{\link{dztplnm}}
 #'
