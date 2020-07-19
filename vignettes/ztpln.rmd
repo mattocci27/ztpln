@@ -175,6 +175,6 @@ ggplot(dat, aes(x = x, y = y, col = type)) +
 
 ## Reference
 
-Bulmer, M. G. 1974. On Fitting the Poisson Lognormal Distribution to Species-Abundance Data. Biometrics 30:101-110. [doi:10.2307/2529621](https://www.jstor.org/stable/2529621)
+Bulmer, M. G. 1974. On Fitting the Poisson Lognormal Distribution to Species-Abundance Data. Biometrics 30:101-110.
 
-Inouye, D., E. Yang, G. Allen, and P. Ravikumar. 2017. A Review of Multivariate Distributions for Count Data Derived from the Poisson Distribution. Wiley interdisciplinary reviews. Computational statistics 9:e1398. [doi:10.1002/wics.1398](https://onlinelibrary.wiley.com/doi/full/10.1002/wics.1398)
+Inouye, D., E. Yang, G. Allen, and P. Ravikumar. 2017. A Review of Multivariate Distributions for Count Data Derived from the Poisson Distribution. Wiley interdisciplinary reviews. Computational statistics 9:e1398.
