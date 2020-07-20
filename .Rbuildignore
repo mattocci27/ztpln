@@ -21,3 +21,4 @@ ref*
 .travis.yml
 .pdf$
 .tar.gz$
+^LICENSE\.md$
