@@ -63,7 +63,7 @@ install.packages("ztpln_0.1.0.tar.gz")
 4. Check
 
 ```
-R CMD check --as-cran ztpln_0.1.0.tar.gz
+R CMD check --as-cran ztpln_0.1.0.9000.tar.gz
 ```
 
 
