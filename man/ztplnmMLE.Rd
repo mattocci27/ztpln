@@ -7,7 +7,7 @@
 ztplnmMLE(
   n,
   K = 2,
-  lower_mu = rep(-5, K),
+  lower_mu = rep(0, K),
   upper_mu = rep(log(max(n)), K),
   lower_sig = rep(0.001, K),
   upper_sig = rep(10, K),

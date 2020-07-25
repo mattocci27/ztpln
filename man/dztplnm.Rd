@@ -12,9 +12,9 @@ rztplnm(n, mu, sig, theta, type1 = TRUE)
 \arguments{
 \item{x}{vector of (non-negative integer) quantiles.}
 
-\item{mu}{vector of mean of lognormal distribution in sample 1.}
+\item{mu}{vector of mean of lognormal distribution in sample.}
 
-\item{sig}{vector mean of lognormal distribution in sample 1.}
+\item{sig}{vector standard deviation of lognormal distribution in sample.}
 
 \item{theta}{vector of mixture weights}
 
@@ -25,7 +25,8 @@ rztplnm(n, mu, sig, theta, type1 = TRUE)
 \item{n}{number of random values to return.}
 }
 \value{
-dpois gives the (log) density, ppois gives the (log) distribution
+dztplnm gives the (log) density and rztplnm generates
+random variates.
 function, qpois gives the quantile function, and rpois generates random
 deviates.
 }

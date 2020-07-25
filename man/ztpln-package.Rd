@@ -12,7 +12,11 @@ estimates of the zero-truncated Poisson lognormal distributions and their
 mixtures.
 }
 \references{
-M. G. Bulmer. 1974. On Fitting the Poisson Lognormal Distribution to Species-Abundance Data. Biometrics 30: 101-110 \href{https://www.jstor.org/stable/2529621?origin=crossref&seq=1#metadata_info_tab_contents}{doi:10.2307/2529621}
+Bulmer, M. G. 1974. On Fitting the Poisson Lognormal Distribution to Species-Abundance Data. Biometrics 30:101-110.
+
+Inouye, D., E. Yang, G. Allen, and P. Ravikumar. 2017. A Review of Multivariate Distributions for Count Data Derived from the Poisson Distribution. Wiley interdisciplinary reviews. Computational statistics 9.
+
+Raqab, M. Z., D. Kundu, and F. A. Al-Awadhi. 2019. Compound zero-truncated Poisson normal distribution and its applications. Communications in Statistics - Theory and Methods:1–21.
 }
 \seealso{
 Useful links:

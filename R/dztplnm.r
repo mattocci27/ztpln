@@ -8,13 +8,14 @@
 #' For mathematical details, please see `vignette("ztpln")`
 #'
 #' @param n number of random values to return.
-#' @param mu vector of mean of lognormal distribution in sample 1.
-#' @param sig vector mean of lognormal distribution in sample 1.
+#' @param mu vector of mean of lognormal distribution in sample.
+#' @param sig vector standard deviation of lognormal distribution in sample.
 #' @param theta vector of mixture weights
 #' @param x	vector of (non-negative integer) quantiles.
 #' @param log logical; if TRUE, probabilities p are given as log(p).
 #' @param type1 logical; if TRUE, Use type 1 ztpln else use type 2.  
-#' @return dpois gives the (log) density, ppois gives the (log) distribution
+#' @return dztplnm gives the (log) density and rztplnm generates
+#' random variates.
 #' function, qpois gives the quantile function, and rpois generates random
 #' deviates.
 #' @seealso \code{\link{dztpln}}
