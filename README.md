@@ -1,5 +1,7 @@
-# Zero Truncated Poisson Lognormal Distribution
 
+# Zero Truncated Poisson Lognormal Distribution
+[![CRAN
+status](https://www.r-pkg.org/badges/version/ztpln)](https://cran.r-project.org/package=ztpln)
 [![Build Status](https://travis-ci.org/mattocci27/ztpln.svg)](https://travis-ci.org/mattocci27/ztpln)
 
 The type 1 zero truncated Poisson lognormal distribution uses the
