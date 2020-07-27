@@ -16,9 +16,6 @@ Depends:
 Imports: 
     DistributionUtils,
     Rcpp (>= 0.12.0), 
-    colorspace,
-    dbplyr,
-    lubridate,
     mixtools,
     stats 
 Suggests:

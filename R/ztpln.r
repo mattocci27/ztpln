@@ -16,9 +16,6 @@
 
 #' @import Rcpp
 #' @import stats
-#' @import colorspace
-#' @import lubridate
-#' @import dbplyr
 #' @importFrom DistributionUtils is.wholenumber
 #' @importFrom mixtools normalmixEM
 
