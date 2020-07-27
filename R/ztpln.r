@@ -16,11 +16,11 @@
 
 #' @import Rcpp
 #' @import stats
-#' @import DistributionUtils
-#' @import mixtools
 #' @import colorspace
-#' @import DBI
 #' @import lubridate
+#' @import dbplyr
+#' @importFrom DistributionUtils is.wholenumber
+#' @importFrom mixtools normalmixEM
 
 #' @useDynLib ztpln, .registration=TRUE
 NULL
