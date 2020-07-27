@@ -22,7 +22,7 @@ before_install:
   - ./run.sh bootstrap
 
 install:
-  - ./run.sh install_aptget r-cran-rcpp r-cran-rcppeigen r-cran-rmarkdown r-cran-dplyr r-cran-tidy r-cran-ggplot2 r-cran-testthat
+  - ./run.sh install_aptget r-cran-rcpp r-cran-rcppeigen r-cran-rmarkdown r-cran-dplyr r-cran-tidyr r-cran-ggplot2 r-cran-testthat
 
 before_script: 
   - Rscript -e "install.packages(c('RcppNumerical', 'DistributionUtils', 'mixtools'), repos='https://cloud.r-project.org/')"
