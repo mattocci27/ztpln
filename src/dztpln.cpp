@@ -27,7 +27,7 @@ double upper(int x, double m, double mu, double sig)
    d = 10;
    while (d > 0.000001) {
       if ((x - 1) * z - exp(z) - 0.5 / sig * ((z - mu) * (z - mu)) - mf 
-          + log(1000000) > 0) 
+          + log(1000000.0) > 0) 
         z = z + d; else z = z - d;
       d = d / 2;
    }
@@ -44,7 +44,7 @@ double lower(int x, double m, double mu, double sig)
    d = 10;
    while (d > 0.000001) {
       if ((x - 1) * z - exp(z) - 0.5 / sig * ((z - mu) * (z - mu)) - mf 
-          + log(1000000) > 0) 
+          + log(1000000.0) > 0) 
         z = z - d; else z = z + d;
       d = d / 2;
    }
@@ -126,7 +126,7 @@ double check_diff(double mu, double sig) {
 Rcpp::NumericVector do_dpln2(Rcpp::IntegerVector x, double mu, double sig){
   int n = x.size();
   Rcpp::NumericVector out(n);
-  double a, b, m, a0, b0, m0, a2, b2, m2;
+  double a, b, m, a0, b0, m0;
   double diff = check_diff(mu, sig);
   for (int i = 0; i < n; i++) {
     m = maxf(x[i], mu, sig);
@@ -160,9 +160,11 @@ Rcpp::NumericVector do_dpln2(Rcpp::IntegerVector x, double mu, double sig){
 Rcpp::NumericVector do_dztpln(Rcpp::IntegerVector x, double mu, double sig){
   int n = x.size();
   double sig2 = sig * sig;
+  Rcpp::IntegerVector zero (1);
   Rcpp::NumericVector p(n), p00(1), p0(n), lik(n); 
   p = do_dpln(x, mu, sig2);
-  p00 = do_dpln({0}, mu, sig2);
+  p00 = do_dpln(zero, mu, sig2);
+  //p00 = do_dpln(0, mu, sig2);
   p0 = Rcpp::rep(p00, n);
   lik = p / (1.0 - p0);
   return lik;

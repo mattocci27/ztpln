@@ -1,8 +1,8 @@
 Type: Package
 Package: ztpln
 Title: Zero-Truncated Poisson Lognormal Distribution
-Version: 0.1.0.9000
-Date: 2020-07-17
+Version: 0.1.1
+Date: 2020-07-26
 Author: Masatoshi Katabuchi
 Maintainer: Masatoshi Katabuchi <mattocci27@gmail.com>
 Description: Functions for obtaining the density, random variates 
@@ -14,11 +14,8 @@ BugReports: https://github.com/mattocci27/ztpln/issues
 Depends: 
     R (>= 3.5)
 Imports: 
-    DBI,
     DistributionUtils,
     Rcpp (>= 0.12.0), 
-    colorspace,
-    lubridate,
     mixtools,
     stats 
 Suggests:
