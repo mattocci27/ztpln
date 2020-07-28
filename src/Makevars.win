@@ -1,4 +1,3 @@
 # use C++11
 CXX_STD = CXX11
-CXX11STD = -std=gnu++11
-PKG_CXXFLAGS = $(CXXFLAGS) $(shell "${R_HOME}/bin${R_ARCH_BIN}/Rscript.exe" -e 'Rcpp:::CxxFlags()') $(BHPATH)
+PKG_CPPFLAGS = -DR_BUILD -DWIN_R_BUILD
