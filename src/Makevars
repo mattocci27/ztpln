@@ -1,0 +1,4 @@
+# use C++11
+CXX_STD = CXX11
+CXX11STD = -std=gnu++11
+PKG_CXXFLAGS = $(CXXFLAGS) `$(R_HOME)/bin/Rscript -e 'Rcpp:::CxxFlags()'`
