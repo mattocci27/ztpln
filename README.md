@@ -2,7 +2,7 @@
 # Zero Truncated Poisson Lognormal Distribution
 [![CRAN
 status](https://www.r-pkg.org/badges/version/ztpln)](https://cran.r-project.org/package=ztpln)
-[![Build Status](https://travis-ci.org/mattocci27/ztpln.svg)](https://travis-ci.org/mattocci27/ztpln)
+![R-CMD-check](https://github.com/mattocci27/ztpln/workflows/R-CMD-check/badge.svg?branch=master)
 
 The type 1 zero truncated Poisson lognormal distribution uses the
 conditional probability distribution of Poisson lognormal and the type 2 zero truncated Poisson lognormal distribution uses the zero truncated Poisson distribution. Please see `vignette("ztpln")` for details.
