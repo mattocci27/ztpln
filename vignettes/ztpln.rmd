@@ -1,7 +1,7 @@
 ---
 title: "Zero Truncated Poisson Lognormal Distribution"
 output: rmarkdown::html_vignette
-vignette: > 
+vignette: >
   %\VignetteIndexEntry{Zero Truncated Poisson Lognormal Distribution}
   %\VignetteEngine{knitr::rmarkdown}
   #%\usepackage[utf8]{inputenc}
@@ -98,7 +98,7 @@ for ZTPLN type 2.
 
 We can generate ZTPLN random variates.
 
-````{r, eval = T}
+```{r, eval = T}
 library(dplyr)
 library(tidyr)
 library(ggplot2)
@@ -111,19 +111,19 @@ rztpln(n = 10, mu = 6, sig = 4)
 
 We can also generate mixture of ZTPLN random variates.
 
-````{r, eval = T}
-rztplnm(n = 100, 
-  mu = c(0, 4), 
-  sig = c(0.5, 0.5), 
+```{r, eval = T}
+rztplnm(n = 100,
+  mu = c(0, 4),
+  sig = c(0.5, 0.5),
   theta = c(0.2, 0.8)) %>%
   log %>% hist(main = "", xlab = "k")
 ```
 
-### Maximum likelihood estimation 
+### Maximum likelihood estimation
 
 Type 1 model (`dztpln(..., type1 = TRUE)`) fits better for type 1 random variates (`rztpln(..., type1 = TRUE)`).
 
-````{r, eval = T}
+```{r, eval = T}
 y <- rztpln(n = 100, mu = 2, sig = 5, type1 = TRUE)
 sum(dztpln(y, mu = 2, sig = 5, log = TRUE, type1 = TRUE))
 sum(dztpln(y, mu = 2, sig = 5, log = TRUE, type1 = FALSE))
@@ -131,7 +131,7 @@ sum(dztpln(y, mu = 2, sig = 5, log = TRUE, type1 = FALSE))
 
 Type 2 model (`dztpln(..., type1 = FALSE)`) fits better for type 2 random variates (`rztpln(..., type1 = FALSE)`).
 
-````{r, eval = T}
+```{r, eval = T}
 y2 <- rztpln(n = 100, mu = 2, sig = 5, type1 = FALSE)
 sum(dztpln(y2, mu = 2, sig = 5, log = TRUE, type1 = TRUE))
 sum(dztpln(y2, mu = 2, sig = 5, log = TRUE, type1 = FALSE))
