@@ -1,23 +1,23 @@
 Type: Package
 Package: ztpln
 Title: Zero-Truncated Poisson Lognormal Distribution
-Version: 0.1.1.9000
-Date: 2020-07-26
+Version: 0.1.2
+Date: 2021-10-09
 Author: Masatoshi Katabuchi
 Maintainer: Masatoshi Katabuchi <mattocci27@gmail.com>
-Description: Functions for obtaining the density, random variates 
+Description: Functions for obtaining the density, random variates
              and maximum likelihood estimates of the Zero-truncated Poisson lognormal
              distribution and their mixture distribution.
 License: MIT + file LICENSE
 URL: https://github.com/mattocci27/ztpln
 BugReports: https://github.com/mattocci27/ztpln/issues
-Depends: 
+Depends:
     R (>= 3.5)
-Imports: 
+Imports:
     DistributionUtils,
-    Rcpp (>= 0.12.0), 
+    Rcpp (>= 0.12.0),
     mixtools,
-    stats 
+    stats
 Suggests:
     knitr,
     dplyr,
@@ -25,13 +25,13 @@ Suggests:
     rmarkdown,
     testthat,
     tidyr(>= 1.0.0)
-LinkingTo: 
-    Rcpp (>= 0.12.0), 
-    RcppEigen (>= 0.3.3.3.0), 
+LinkingTo:
+    Rcpp (>= 0.12.0),
+    RcppEigen (>= 0.3.3.3.0),
     RcppNumerical (>= 0.3-2)
 VignetteBuilder: knitr
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 NeedsCompilation: yes

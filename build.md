@@ -3,25 +3,29 @@
 
 ```{r}
 # build
-docker build -t ztpln:4.0.2 ./docker --build-arg USER_NAME=mattocci
+docker build -t ztpln:4.1.1 ./docker --build-arg USER_NAME=mattocci
+docker build -t ztpln:4.1.1 ./docker
 
-# tag and push to private repo
-docker tag ztpln:4.0.2  192.168.1.123:5000/ztpln:4.0.2
-docker push 192.168.1.123:5000/ztpln:4.0.2
-
-docker pull 192.168.1.123:5000/ztpln:4.0.2
-docker tag 192.168.1.123:5000/ztpln:4.0.2 ztpln:4.0.2  
 
 # run bash
-docker run -it --rm -v $(pwd):/home/mattocci/ztpln -u mattocci ztpln:4.0.2 /bin/bash
-docker run -it --rm -v $(pwd):/home/rstudio/ztpln -u rstudio ztpln:4.0.2 /bin/bash
+docker run -it --rm -v $(pwd):/home/mattocci/ztpln -u mattocci ztpln:4.1.1 /bin/bash
+docker run -it --rm -v $(pwd):/home/rstudio/ztpln -u rstudio ztpln:4.1.1 /bin/bash
 
 # run rstudio
-docker run -it --rm -p 8787:8787 -v $(pwd):/home/rstudio/ztpln -e PASSWORD=<password> ztpln:4.0.2
+docker run -it --rm -p 8787:8787 -v $(pwd):/home/rstudio/ztpln -e USERID=rstudio -e PASSWORD=test ztpln:4.1.1
+
+```
+
+## Singularity
+
+```
+
+sudo singularity build ztpln.sif
 
 ```
 
 ## Check
+
 
 1. Build
 
