@@ -1,0 +1,841 @@
+
+```{r}
+
+library(Rcpp)
+library(ztpln)
+library(poilog)
+
+dpoilog(2, 2, 3) / (1 - dpoilog(0, 2, 3))
+
+Rcpp::sourceCpp("./src/dztpln.cpp")
+dztpln(2, 2, 3)
+do_dztpln(2, 2, 3)
+do_pztpln(5, 2, 3)
+
+dpois(1, 3)
+ppois(20, 3)
+
+tic()
+sum(dztpln(1:1e+5, 2, 3))
+toc()
+
+tic()
+a <- sum(dztpln(1:1e+5, 5, 4))
+toc()
+
+tic()
+b <- do_pztpln(1e+5, 5, 4)
+toc()
+
+pnorm(1.965)
+
+docker build -t ztpln:4.0.2 ./docker --build-arg USER_NAME=mattocci
+
+docker build -t ztpln:3.5.0 -f ./docker/Dockerfile3.5 . --build-arg USER_NAME=mattocci
+
+docker build -t ztpln:3.6.0 -f ./docker/Dockerfile3.5 . --build-arg USER_NAME=mattocci
+
+library(roxygen2)
+library(RcppNumerical)
+library(RcppEigen)
+devtools::session_info()
+
+
+install.packages("roxygen2", repos = "https://mirrors.tuna.tsinghua.edu.cn/CRAN/")
+
+install.packages("RcppNumerical", repos = "https://mirrors.tuna.tsinghua.edu.cn/CRAN/")
+
+install.packages("RcppNumerical", repos = "https://mirrors.tuna.tsinghua.edu.cn/CRAN/")
+
+
+docker tag ztpln:4.0.2  192.168.1.123:5000/ztpln:4.0.2
+docker push 192.168.1.123:5000/ztpln:4.0.2
+
+sudo docker build -t ztpln ./docker
+sudo docker run -it --rm -v $(pwd):/home/rstudio/ztpln -e PASSWORD=test ztpln /bin/bash
+
+sudo docker run -it --rm -p 8787:8787 -v $(pwd):/home/rstudio/ztpln -e PASSWORD=test ztpln
+
+docker pull hub-mirror.c.163.com/rocker/verse:3.5.0 
+
+docker run -it --rm -v $(pwd):/home/rstudio/ztpln -u rstudio ztpln:4.0.2 /bin/bash
+
+docker run -it --rm -v $(pwd):/home/mattocci/ztpln -u mattocci ztpln:3.5.0 /bin/bash
+
+
+docker run -it --rm -v $(pwd):/home/mattocci/ztpln ztpln:4.0.2 /bin/bash
+
+docker run -it --rm -p 8787:8787 -v $(pwd):/home/mattocci/ztpln -e PASSWORD=test ztpln:4.0.2
+
+docker run -it --rm -p 8787:8787 -v $(pwd):/home/rstudio/ztpln -e PASSWORD=test ztpln:4.0.2
+
+
+
+CXX=clang++ -arch x86_64 -ftemplate-depth-256
+
+R CMD config CC
+R CMD config CXXFLAGS
+
+tinytex::tlmgr_install(c("texlive-scripts", "dehyph-exptl"))
+tinytex::install_tinytex()
+
+Rcpp::sourceCpp("./src/rztpln.cpp")
+Rcpp::sourceCpp("./src/dztpln.cpp")
+
+roxygen2::roxygenise()
+devtools::check(".", manual = TRUE)
+devtools::build_vignettes()
+devtools::build(".")
+devtools::build_manual(".")
+
+devtools::build_vignettes("../ztpln_0.1.0.tar.gz")
+
+cp ztpln_0.0.1.tar.gz ./ztpln/ztpln_0.0.1.tar.gz
+cp ../ztpln_0.1.0.pdf .
+cp ../ztpln_0.1.0.tar.gz .
+cp ztpln_0.0.1.tar.gz ./ztpln/ztpln_0.0.1.tar.gz
+install.packages("ztpln_0.0.1.tar.gz")
+install.packages("ztpln_0.1.0.tar.gz")
+
+# windows
+devtools::check_win_release()
+devtools::check_win_devel()
+devtools::check_win_oldrelease()
+
+# rhub
+library(rhub)
+validate_email("mattocci27@gmail.com")
+check_on_linux()
+
+devtools::install_deps()
+devtools::test()
+devtools::test_coverage()
+devtools::run_examples()
+devtools::document()
+devtools::check(".", manual = TRUE)
+
+
+devtools::load_all()
+#devtools::document()
+
+devtools::install(build_vignettes = TRUE)
+
+library(ztpln)
+vignette("ztpln")
+vignette("test")
+
+do_dpln2(3, 1, 16)
+do_dpln2(650, 1, 16)
+do_dztpln(650, 1,4)
+
+for ( i in 570:580) do_dpln2(i, 1, 16) %>% log %>% print
+for ( i in 570:580) do_dpln2(i, 5, 20) %>% log %>% print
+
+y <- dztpln(1:500, 1, 4, type1 = T, log = T) - dztpln(1:500, 1, 4, type1 = F, log = T)
+y[300] - y[400]
+y[100] - y[400]
+
+dztpln(3, 1, 4, type1 = T, log = F) / dztpln(3, 1, 4, type1 = F, log = F)
+dztpln(3, 1, 4, type1 = T, log = T) - dztpln(3, 1, 4, type1 = F, log = T)
+
+k <- 400
+mu <- 3
+sig <- 4
+dztpln(k, mu, sig, type1 = T, log = F) / dztpln(k, mu, sig, type1 = F, log = F)
+dztpln(k, mu, sig, type1 = T, log = T) - dztpln(k, mu, sig, type1 = F, log = T)
+
+
+dztpln(300, 1, 4, type1 = T, log = F) / dztpln(300, 1, 4, type1 = F, log = F)
+dztpln(300, 1, 4, type1 = T, log = T) - dztpln(300, 1, 4, type1 = F, log = T)
+
+dztpln(400, 1, 4, type1 = T, log = F) / dztpln(400, 1, 4, type1 = F, log = F)
+dztpln(400, 1, 4, type1 = T, log = T) - dztpln(400, 1, 4, type1 = F, log = T)
+
+dztpln(700, 1, 4, type1 = T, log = F) / dztpln(700
+                                      , 1, 4, type1 = F, log = F)
+dztpln(700, 1, 4, type1 = T, log = T) - dztpln(700
+                                      , 1, 4, type1 = F, log = T)
+
+dztpln(1000, 1, 4, type1 = T, log = F) / dztpln(1000, 1, 4, type1 = F, log = F)
+dztpln(1000, 1, 4, type1 = T, log = T) - dztpln(1000, 1, 4, type1 = F, log = T)
+
+
+
+dztpln(2, 1, 4, type1 = T, log = T) - dztpln(2, 1, 4, type1 = F, log = T)
+
+dztpln(500, 1, 4, type1 = T, log = T) - dztpln(500, 1, 4, type1 = F, log = T)
+
+dztpln(600, 1, 4, type1 = T, log = T)
+dztpln(600, 1, 4, type1 = F, log = T)
+
+dztpln(800, 1, 4, type1 = T, log = T)
+dztpln(800, 1, 4, type1 = F, log = T)
+
+
+exp(6.474912)
+exp(6.261176)
+exp(6.674427)
+
+test_fun(650, 6.474912, 1, 16)
+test_fun(650, 6.261176, 1, 16)
+test_fun(650, 6.674427, 1, 16)
+
+test_fun(650, 6.56, 1, 16)
+
+k <- 1
+mu <- 1
+sig2 <- 4
+m <- maxf(k, mu, sig2)
+m2 <- maxf2(k, mu, sig2)
+b <- upper(k, m, mu, sig2)
+a <- lower(k, m, mu, sig2)
+b2 <- upper2(k, m2, mu, sig2)
+a2 <- lower2(k, m2, mu, sig2)
+
+do_dpln(k, mu, sig2)
+do_dpln2(k, mu, sig2)
+
+do_dztpln(0, 0, 1)
+do_dztpln2(0, 0, 1)
+
+do_dztpln(1, 0, 1)
+do_dztpln2(1, 0, 1)
+do_dpln(1, 2, 10) / (1 - do_dpln(0, 2, 10))
+do_vec_rztpln(10, 2, 5)
+
+k <- 20
+plot(1:k, do_dztpln(1:k, 3, 5), type = "b")
+points(1:k, do_dztpln2(1:k, 3, 5), type = "b", col = "blue")
+
+k <- 20
+plot(0:k, do_dztpln(0:k, 3, 5), type = "b")
+points(0:k, do_dztpln2(0:k, 3, 5), type = "b", col = "blue")
+
+system.time(do_vec_rztpln(100, 2, 5))
+system.time(do_vec_rztpln2(100, 2, 5))
+
+install.packages("ztpln_0.1.0.tar.gz")
+
+do_dpln(1, 2, 1)
+do_dpln2(1, 2, 1)
+
+k <- 3
+lambda <- 2
+ppois(k, lambda)
+
+exp(-lambda) * sum(c(1 + lambda + lambda^2 /2 + lambda^3 / 6)) - exp(-lambda)
+
+exp(-lambda) * sum(c(lambda + lambda^2 /2 + lambda^3 / 6))
+
+
+ppois(1, lambda) / (1 - ppois(0, lambda))
+ppois(2, lambda) / (1 - ppois(0, lambda))
+ppois(3, lambda) / (1 - ppois(0, lambda))
+
+actuar::dztpois(2, lambda)
+
+actuar::pztpois(2, lambda)
+
+countreg::pztpois(2, lambda)
+ppois(2, lambda) 
+(ppois(2, lambda) -  ppois(0, lambda))/ -(exp(-lambda) - 1)
+
+ppois(2, lambda) / (1 - exp(-lambda))
+
+tic()
+k <- 100000
+tmp <- NULL
+for (i in 1:k) {
+  tmp[i] <- dztpln(i, log(2), 1)
+}
+toc()
+
+sum(tmp)
+
+dpois(2, 3)
+dgamma(2 + 1, 3, 1)
+
+do_pztpln2(100, log(2), 0.001)
+system.time(a <- do_pztpln0(30000, 5, 3))
+system.time(b <- do_pztpln2(30000, 5, 2)
+
+
+a 
+b
+n <- 100
+mu <- 5
+sig <- 3
+rpoilog2 <- function(n, mu, sig) {
+  tmp <- poilog::rpoilog(n, mu, sig)
+  while (length(tmp) < n){
+  tmp <- c(tmp, poilog::rpoilog(n - length(tmp), mu, sig))
+  print("moge")
+  }
+  tmp
+}
+
+system.time(rpoilog2(10000, 1, 5))
+system.time(rztpln(10000, 1, 5))
+
+rpoilog2(100, 1, 5) %>% summary
+rztpln(100, 1, 5)　%>% summary
+
+poilog::rpoilog(100, 5, 4)
+
+do_pztpln(c(1, 2, 3), log(2), 0.001)
+
+do_pztpln(1:1000, log(2), 1)
+
+do_pztpln0(2, 2, 1)
+do_dztpln(1, 2, 1)  + do_dztpln(2, 2, 1) 
+
+do_dztpln(2, 2, 1)
+do_dpln(2, 2, 1) / (1 - do_dpln(0, 2, 1))
+
+
+xx <- seq(0.01, 0.99, length = 100)
+fun <- function(x, lambda) {
+  p0c <- 1 - exp(-lambda)
+  x2 <- p0c *  x + ( 1  - p0c )
+  qpois(x2, lambda)
+}
+
+par(mfrow = c(1,2))
+plot(qpois(xx, lambda), xx)
+points(fun(xx, lambda) + 0.2, xx, col = "blue")
+plot(actuar::qztpois(xx, lambda), xx)
+points(fun(xx, lambda) + 0.2, xx, col = "blue")
+par(mfrow = c(1,1))
+
+fun(0.2, lambda)
+
+/ (1 - ppois(0, lambda))
+
+qpois(exp(-lambda) - 0.001, lambda)
+qpois(ppois(1, lambda), lambda)
+
+
+namespace ‘Rcpp’ is imported by ‘scales’, ‘htmltools’, ‘readr’, ‘tidyr’, ‘readxl’, ‘tidyselect’, ‘dplyr’, ‘xml2’, ‘haven’, ‘lubridate’ so cannot be unloaded
+o
+
+remove.packages(c("tidyr", "dplyr", "tidyselect"))
+
+set.seed(123)
+rztplnm(10, c(1,10), rep(0.01, 2), c(0.2, 0.8))
+set.seed(123)
+rztplnm2(10, c(1,10), rep(0.01, 2), c(0.2, 0.8))
+
+a <- do_dztpln(y, mu[1], sig[1])
+a <- do_dztpln(y, 2, 1)
+
+log(a)
+
+par(mfrow=c(1,2))
+plot(0:6, ppois(0:6, 2))
+xx <- seq(0, 1, length = 100)
+plot(qpois(xx, 2), xx)
+par(mfrow=c(1,1))
+
+rgamma(100, 1, 0.33)
+
+do_dztplnm(1:5, 1:2, rep(0.1, 2) , 1:2)
+
+do_dztpln(1:5, 1, 0.1)
+do_dztpln(1:5, 2, 0.1)
+
+system.time(dztplnm0(1:100000, c(1, 20), rep(0.1, 2), c(0.2, 0.8)))
+
+system.time(dztplnm(1:100000, c(1, 2), rep(0.1, 2), c(0.2, 0.8)))
+system.time(dztplnm1(1:100000, c(1, 2), rep(0.1, 2), c(0.2, 0.8)))
+
+system.time(dztplnm0(1:10000, c(1, 2, 3), rep(0.1, 3), c(0.2, 0.3, 0.5)))
+
+system.time(dztplnm(1:1000000, c(1, 2, 3), rep(0.1, 3), c(0.2, 0.3, 0.5)))
+
+system.time(dztplnm(c(1, 10^2, 10^8), c(1, 2, 3), rep(0.1, 3), c(0.2, 0.3, 0.5)))
+
+system.time(dztplnm1(1:1000000, c(1, 2, 3), rep(0.1, 3), c(0.2, 0.3, 0.5)))
+
+system.time(rztplnm(10, c(1,10), rep(0.01, 2), c(0.2, 0.8)))
+system.time(rztplnm2(10, c(1,10), rep(0.01, 2), c(0.2, 0.8)))
+system.time(rmultinom(100000, 1, c(0.2, 0.8)))
+
+
+// Grøtan Grotan and Steinar Engen 2007
+// Masatohsi Katabuchi 2020
+
+system.time(poilog::dpoilog(1:1000, 2, 8))
+system.time(poilog_itg(1:1000, 8, 2))
+
+
+poilog::dpoilog(1, 1, 0.1) / ( 1 - poilog::dpoilog(0, 1, 0.1))
+
+do_vec_rztplnm(10, c(1,3), c(1, 2), c(0.1, 0.9))
+do_rztplnm2(10, c(1,3), c(1, 2), c(0.1, 0.9))
+
+do_dpln(1, 0.1, 1)
+
+do_dpln(1, 0.1, 1) / (1 - do_dpln(0, 0.1, 1))
+
+do_dztpln(1, 0.1, 1)
+
+dztpln(1, 1, 0.1)
+
+
+k <- 2
+lambda <- 1
+kk <- 0:4
+par(mfrow = c(1,2))
+plot(kk, (ppois(kk, lambda) - exp(-lambda)) / (1-exp(-lambda)), type = "b",
+     col = "blue", lwd = 2)
+points(kk, ppois(kk, lambda), type = "b", lwd = 2)
+abline(h = exp(-lambda))
+abline(v = 1)
+
+(ppois(1, lambda) - exp(-lambda)) / (1-exp(-lambda))
+
+
+
+
+
+yy <- seq(0, 1, length = 100)
+plot(qpois(yy, lambda),yy, type = "l",
+     lwd = 2)
+
+yy2 <- seq(exp(-lambda), 1, legnth = 100)
+yy2 <- runif(1000, exp(-lambda), 1)
+
+(1 - exp(-lambda)) / 100
+
+
+yy2 <- yy2[order(yy2)]
+plot(qpois(yy2, lambda),yy2, type = "l",
+     col = "blue", lwd = 2)
+
+
+
+system.time(rpois(1,exp(20)))
+system.time(rztpois(exp(20)))
+system.time(rztpois2(exp(20)))
+system.time(actuar::rztpois(1, exp(20)))
+
+rztpois(exp(20))
+rpois(1,exp(20))
+actuar::rztpois(1, exp(20))
+
+
+rpois(10000, 10) %>% min
+rztpois(10)
+actuar::rztpois(1000, 1) %>% min
+
+system.time(rpois(1,exp(10)))
+system.time(rztpois(exp(10)))
+system.time(rztpois2(exp(10)))
+
+
+system.time(rpois(1,exp(3)))
+system.time(rztpois(exp(3)))
+system.time(rztpois2(exp(3)))
+
+
+y <- actuar::rztpois(n = 100, 2)
+
+actuar::dztpois(3, 2) 
+dpois(3, 2) / (1 - dpois(0, 2))
+
+dztpois(y, 2, log = TRUE) %>% sum
+
+rztpois <- function(n, lambda)
+    .External(C_actuar_do_random, "rztpois", n, lambda)
+
+(rpois(1,exp(10)))
+(rztpois(exp(10)))
+(rztpois2(exp(10)))
+
+rpoilog_tmp((10), 0.01)
+rpoilog_tmp2((10), 0.01)
+
+system.time(rpoilog_tmp(22, 0.01))
+system.time(rpoilog_tmp2(22, 0.01))
+
+rztpln(10, 10, 0.01)
+rztpln2(10, 10, 0.01)
+poilog::rpoilog(10, 10, 0.01)
+
+system.time(rztpln(1000, 21, 0.01))
+system.time(do_rztpln(100000, 1, 0.01))
+system.time(do_rztpln2(100000, 1, 0.01))
+system.time(rztpln2(10000, 1, 0.01))
+
+system.time(poilog::rpoilog(100000, 21, 0.01))
+
+tic()
+for (i in 1:10000)  do_rpoilog(21, 0.01)
+toc()
+
+tic()
+for (i in 1:10000)  do_rpoilog(21, 0.01)
+toc()
+
+tic()
+for (i in 1:10000) poilog::rpoilog(1,21, 0.01)
+toc()
+
+system.time(rztpln3(10, 10, 0.01))
+
+K <- 2
+mu <- runif(K, 0, 8)
+sig <- runif(K, 0, 2)
+theta <- gtools::rdirichlet(1, sample(1:3, K, replace = TRUE)) %>% as.numeric
+mu
+sig
+theta
+y <- rztplnm(n = 100, mu = mu, sigma = sig, theta = theta)
+fit0 <- try(mixtools::normalmixEM(log(y), k = K, maxrestart = 20))
+system.time(res <- ztplnmMLE(y, K = K))
+system.time(res2 <- ztplnMLE2(y))
+
+lambda <- 0.1
+a <-NULL
+for (i in 1:100) {
+  a[i] <- qpois(runif(1, exp(-lambda), 1), lambda)
+}
+
+qpois(runif(1), 1)
+
+
+ppois(2, 5)
+
+
+k <- 1
+t <- ppois(k, lambda) - exp(-lambda) / (1 - exp(-lambda))
+s <- t
+u <- runif(1)
+u <- 0.3
+m <- factorial(1:10)
+
+for (i in 1:10) {
+if(s < u) {
+   k = m[i]
+   t = ppois(k, lambda) - exp(-lambda) / (1 - exp(-lambda))
+   s = t
+   mi = m[i]
+  }
+}
+
+ ki = round(k / 100);
+
+
+fit0$mu
+fit0$sig
+fit0$lambda
+fit0$loglik
+
+res$mu
+res$sig
+res$theta
+res$objective
+
+dztplnm(y, fit0$mu, fit0$sig, fit0$lambda, log = TRUE) %>% sum
+dztplnm(y, res$mu, res$sig, res$theta, log = TRUE) %>% sum
+dztplnm(y, c(res2$par[1], res2$par[3]), c(res2$par[2], res2$par[4]), c(res2$par[5], 1 - res2$par[5]),  log = TRUE) %>% sum
+
+n <- 2 
+alpha <- 1:3
+
+l <- length(alpha)
+x <- matrix(rgamma(l * n, alpha), ncol = l, byrow = TRUE)
+sm <- x %*% rep(1, l)
+x/as.vector(sm)
+
+
+fit0$lambda / fit0$sig
+
+res <- ztplnmMLE(y, K = 3)
+
+theta <- c(1, 3, 2)
+theta2 <- theta / sum(theta)
+
+mu %*% theta
+
+mu %*% theta2
+
+
+res$par[5:6] %>% sum
+
+counts <- y
+K <- 3
+lower_mu = rep(-5, K)
+upper_mu = rep(log(max(counts)), K)
+lower_sig = rep(0.001, K)
+upper_sig = rep(10, K) 
+lower_theta = rep(0.001, K)
+upper_theta = rep(0.999, K) 
+
+cp /home/rstudio/ztpln_0.0.1.tar.gz /home/rstudio/ztpln/ztpln_0.0.1.tar.gz
+
+install.packages("/home/rstudio/ztpln_0.0.1.tar.gz")
+
+tar -zxvf /home/ztpln_0.0.1.tar.gz
+
+devtools::build("~/Dropbox/ztpln")
+install.packages("~/Dropbox/ztpln/ztpln_0.0.1.tar.gz")
+devtools::document()
+
+
+
+```
+
+- rztpln
+- rztpln
+
+
+
+```{r}
+
+y <- rztpln(n = 100, mu = 2, sigma = 5)
+system.time(res<- ztplnMLE(y))
+system.time(res2<- poilog::poilogMLE(y))
+system.time(res3<- poilog::poilogMLE(y, zTrunc=FALSE))
+
+system.time(
+
+system.time(rpoilog_tmp(20.4, 0.001))
+system.time(rpoilog_tmp2(20, 1))
+
+
+rztpois(exp(20))
+
+rpoilog_tmp(20, 1)
+rpoilog_tmp2(20, 1)
+
+rpoilog_tmp(10, 1)
+rpoilog_tmp2(20, 1)
+
+system.time(y1 <- rztpln(n = 10, mu = 20, sigma = 0.01))
+system.time(y2 <- rztpln3(n = 10, mu = 20, sigma = 0.01))
+
+system.time(y3 <- poilog::rpoilog(S = 10, mu = 20, sig = 0.01))
+
+
+system.time(y3 <- sads::rpoilog(n = 10, mu = 20, sig = 1))
+
+system.time(y2 <- poilog::rpoilog(S = 10, mu = 6, sig = 10))
+
+ppois(1, 5)
+
+
+qpois(0.124, 5)
+
+
+set.seed(123)
+tmp1 <- numeric(100)
+tmp2 <- numeric(100)
+for (i in 1:100){
+  mu <- runif(3, 0, 10)
+  sig <- runif(3, 0, 4)
+  theta <- gtools::rdirichlet(1, c(1,2,3)) %>% as.numeric
+  mu
+  sig
+  theta
+
+  y <- rztplnm(n = 100, mu = mu, sigma = sig, theta = theta)
+  like1 <- dztplnm(y, mu = mu, sigma = sig, theta = theta, log = T)
+  like2 <- dztplnm2(y, mu = mu, sigma = sig, theta = theta, log = T)
+
+  tmp1[i]  <- sum(like1)
+  tmp2[i] <- sum(like2)
+}
+
+  system.time(like1 <- dztplnm(y, mu = mu, sigma = sig, theta = theta, log = T))
+  system.time(like2 <- dztplnm2(y, mu = mu, sigma = sig, theta = theta, log = T))
+library(tictoc)
+tic()
+for (i in 1:100) like1 <- dztplnm(y, mu = mu, sigma = sig, theta = theta, log = T)
+toc()
+
+tic()
+for (i in 1:100) like2 <- dztplnm2(y, mu = mu, sigma = sig, theta = theta, log = T)
+toc()
+
+plot(tmp1, tmp2)
+abline(a=0,b=1)
+
+like1 <- dztplnm(y, mu = c(2, 10), sigma = c(2, 3), theta = c(0.8, 0.2), log = T)
+like2 <- dztplnm2(y, mu = c(2, 10), sigma = c(2, 3), theta = c(0.8, 0.2), log = T)
+plot(like2 ~ like1)
+
+lm(like1 ~ like2) 
+
+like3 <- dztplnm(y, mu = c(2, 6), sigma = c(2, 3), theta = c(0.2, 0.8), log = T)
+like4 <- dztplnm2(y, mu = c(2, 6), sigma = c(2, 3), theta = c(0.2, 0.8), log = T)
+
+plot(like2 ~ like3)
+
+# 5
+roxygen2::roxygenise()
+devtools::check(".")
+
+a1 <- numeric(100)
+a2 <- numeric(100)
+a3 <- numeric(100)
+for (i in 1:100) {
+a1[i] <- system.time(rztpln(n = 10, mu = 13, sigma = 4))[3]
+a2[i] <- system.time(rztpln(n = 10, mu = 6, sigma = 4))[3]
+#a3[i] <- system.time(rztpln(n = 10, mu = 15, sigma = 4))[3]
+}
+
+
+# 4
+
+```
+
+```{cpp}
+// [[Rcpp::export]]
+Rcpp::NumericVector do_vec_dztpln(Rcpp::IntegerVector n, Rcpp::IntegerVector mu, Rcpp::IntegerVector sig){
+  for (int i = 0; i < n; i++) {
+    lik(i) = do_ztpln(n, mu(i), sig(i)):
+  }
+  return(lik);
+}
+
+// [[Rcpp::export]]
+long do_rztpln2(double mu, double sig){
+  double tau, lambda;
+  long x;
+  tau = R::rnorm(0, 1);
+  lambda = exp(mu + tau * sig);
+  do {
+    if ( x != 0 ) {
+      break;
+    }
+    x = R::qpois(R::runif(0, 1), lambda, 1, 0);
+  } while ( x == 0 );
+  return x;
+}
+
+// [[Rcpp::export]]
+Rcpp::IntegerVector do_vec_rztpln2(int n, double mu, double sig){
+  Rcpp::IntegerVector y(n);
+  for (int i = 0; i < n; i++) {
+    y(i)  = do_rztpln2(mu, sig);
+  }
+  return y;
+}
+
+// [[Rcpp::export]]
+long do_rztpois(double lambda){
+  return R::qpois(R::runif(exp(-lambda), 1), lambda, 1, 0);
+}
+
+// [[Rcpp::export]]
+Rcpp::NumericVector do_pztpln(Rcpp::IntegerVector x, double mu, double sig) {
+  int n = x.size();
+  Rcpp::NumericVector p(n);
+  for ( int j = 0; j < n; j++ ) {
+    p(j) = do_pztpln0(x(j), mu, sig);
+  }
+  return(p);
+}
+
+// [[Rcpp::export]]
+double do_dpln0(int x, double mu, double sig){
+  double out;
+  double a, b, m;
+    m = maxf(x, mu, sig);
+    a = lower(x, m, mu, sig);
+    b = upper(x, m, mu, sig);
+    plnintegrand f(x, mu, sig);
+    double err_est;
+    int err_code;
+    out = integrate(f, a, b, err_est, err_code) 
+      * (1 / std::sqrt(2 * M_PI * sig));
+  return out;
+}
+
+// [[Rcpp::export]]
+double do_dztpln0(int x, double mu, double sig){
+  double sig2 = sig * sig;
+  double p, p0, lik; 
+  p = do_dpln0(x, mu, sig2);
+  p0 = do_dpln0(0, mu, sig2);
+  lik = p / (1.0 - p0);
+  return(lik);
+}
+
+// [[Rcpp::export]]
+double do_pztpln2(Rcpp::IntegerVector x, double mu, double sig) {
+  double p;
+  int x_int = x(0);
+  for ( int i = 1; i <= x_int; i++ ) {
+    p += do_dztpln({i}, mu, sig)(0);
+  }
+  return(p);
+}
+
+// [[Rcpp::export]]
+double do_pztpln0(int x, double mu, double sig) {
+  double p = 0;
+  int i = 1;
+  while ( ( p <= 0.999999 ) && (i <= x ) ) {
+    p += do_dztpln0(i, mu, sig);
+    i++;
+  }
+  printf("%d",  i);
+  return(p);
+}
+
+```
+
+lb <- 3
+xx <- seq(0.01, 0.99, length = 100)
+yy <- qpois(xx, lb )
+dat <- tibble(xx, yy)
+
+ggplot(dat, aes(x = yy, y = xx)) +
+  geom_point() +
+  geom_hline(yintercept = exp(-lb)) +
+  geom_text(aes(x = 0, y = exp(-lb) * 1.5, label = "p(0)")) +
+  xlab("k") +
+  ylab("x") +
+  theme_bw() 
+
+
+// [[Rcpp::export]]
+Rcpp::IntegerVector do_vec_rpln2(int n, double mu, double sig) {
+  Rcpp::IntegerVector y(n);
+  for (int i = 0; i < n; i++) {
+    y(i)  = do_rpln(mu, sig);
+  }
+  return y;
+}
+
+// [[Rcpp::export]]
+std::vector<long> test_fun(int n, double mu, double sig) {
+  std::vector<long> y(n);
+  for (int i = 0; i < n; i++) {
+    y[i]  = do_rpln(mu, sig);
+  }
+  y.erase(std::remove(y.begin(), y.end(), 0), y.end());
+  return y;
+}
+
+// [[Rcpp::export]]
+Rcpp::IntegerVector do_vec_rpln(int n, double mu, double sig) {
+  Rcpp::IntegerVector y(n);
+  for (int i = 0; i < n; i++) {
+    y(i)  = do_rpln(mu, sig);
+  }
+  return y;
+}
+
+// [[Rcpp::export]]
+Rcpp::IntegerVector do_vec2_rpln(int n, Rcpp::NumericVector mu, Rcpp::NumericVector sig) {
+  Rcpp::IntegerVector y(n);
+  for (int i = 0; i < n; i++) {
+    y(i)  = do_rpln(mu(i), sig(i));
+  }
+  return y;
+}
+
+
