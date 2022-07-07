@@ -53,3 +53,18 @@ rztpln <- function(n, mu, sig, type1 = TRUE) {
   if (sig > 15) stop("standard deviation > 15 in log-scale is too large")
   if (type1) do_vec_rztpln1(n, mu, sig) else do_vec_rztpln2(n, mu, sig)
 }
+
+#' @rdname dztpln
+#' @export
+pztpln <- function(x, mu, sig, log = FALSE, type1 = TRUE) {
+  if (length(mu) > 1 | length(sig) > 1)
+    stop("Vectorization of parameters not implemented")
+  if (sig < 0) stop("sig needs to be > 0")
+  if (any(!DistributionUtils::is.wholenumber(x))) warning("non integer values in x")
+  if (min(x) <= 0) warning("zero in x")
+  x <- x[x > 0]
+  if (type1) {
+    lik <- sum(do_dztpln(seq_len(x), mu, sig))
+  } else lik <- sum(do_dztpln2(seq_len(x), mu, sig))
+  if (log) return(log(lik)) else return(lik)
+}

@@ -17,6 +17,10 @@ do_dztplnm2 <- function(x, mu, sigma, theta) {
     .Call(`_ztpln_do_dztplnm2`, x, mu, sigma, theta)
 }
 
+do_pztpln <- function(x, mu, sig) {
+    .Call(`_ztpln_do_pztpln`, x, mu, sig)
+}
+
 do_rztpln <- function(mu, sig) {
     .Call(`_ztpln_do_rztpln`, mu, sig)
 }

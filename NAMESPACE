@@ -2,6 +2,7 @@
 
 export(dztpln)
 export(dztplnm)
+export(pztpln)
 export(rztpln)
 export(rztplnm)
 export(ztplnMLE)
