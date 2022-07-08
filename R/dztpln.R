@@ -1,6 +1,6 @@
-#' The zero-truncated compund poisson-lognormal distributions
+#' The zero-truncated compound poisson-lognormal distributions
 #'
-#' Density function and random generation for Zero-Trauncated Poisson Lognormal
+#' Density function and random generation for Zero-Truncated Poisson Lognormal
 #' distribution with parameters `mu` and sd `sig`.
 #'
 #' A compound Poisson-lognormal distribution is a Poisson probability
@@ -20,7 +20,7 @@
 #' @param sig standard deviation of lognormal distribution.
 #' @param log logical; if TRUE, probabilities p are given as log(p).
 #' @param type1 logical; if TRUE, Use type 1 ztpln else use type 2.
-#' @return dztpln gives the (log) density and rztpln generates
+#' @return dztpln gives the (log) density, pztpln gives the (log) distribution fucntion, and rztpln generates
 #' random variates.
 #' @references Bulmer, M. G. 1974. On Fitting the Poisson Lognormal Distribution to Species-Abundance Data. Biometrics 30:101-110.
 #'

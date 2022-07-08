@@ -10,10 +10,10 @@
 #'
 #' @param n a integer vector of counts
 #' @param lower_mu,upper_mu numeric values of lower and upper bounds for mean of
-#'  the variables's natrual logarithm.
+#'  the variables's natural logarithm.
 #' @param lower_sig,upper_sig numeric values of lower and upper bounds for
-#' standard deviatoin of the variables's natrual logarithm
-#' @param type1 logical; if TRUE, Use type 1 ztpln else use type 2.  
+#' standard deviation of the variables's natural logarithm
+#' @param type1 logical; if TRUE, Use type 1 ztpln else use type 2.
 #' @return \item{convergence}{An integer code. 0 indicates successful
 #' convergence.}
 #' @return \item{iterations}{Number of iterations performed.}

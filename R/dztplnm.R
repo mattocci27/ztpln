@@ -1,9 +1,9 @@
-#' The zero-truncated compund poisson-lognormal distributions mixture
+#' The zero-truncated compound poisson-lognormal distributions mixture
 #'
-#' Density function and random generation for Zero-Truncated 
+#' Density function and random generation for Zero-Truncated
 #' Poisson Lognormal distribution with parameters `mu`, `sig`, and `theta`.
 #'
-#' Type 1 ZTPLN truncates zero based on Poisson-lognormal distribution and 
+#' Type 1 ZTPLN truncates zero based on Poisson-lognormal distribution and
 #' type 2 ZTPLN truncates zero based on zero-truncated Poisson distribution.
 #' For mathematical details, please see `vignette("ztpln")`
 #'
@@ -13,7 +13,7 @@
 #' @param theta vector of mixture weights
 #' @param x	vector of (non-negative integer) quantiles.
 #' @param log logical; if TRUE, probabilities p are given as log(p).
-#' @param type1 logical; if TRUE, Use type 1 ztpln else use type 2.  
+#' @param type1 logical; if TRUE, Use type 1 ztpln else use type 2.
 #' @return dztplnm gives the (log) density and rztplnm generates
 #' random variates.
 #' function, qpois gives the quantile function, and rpois generates random
@@ -28,7 +28,7 @@ dztplnm <- function(x, mu, sig, theta, log = FALSE, type1 = TRUE) {
   if (length(mu) != length(sig) |
       length(mu) != length(theta) |
       length(sig) != length(theta)) {
-    stop("The length of vectors of mean, 
+    stop("The length of vectors of mean,
          variance and mixture weight need to be same.")
   }
   if (sum(theta) != 1) warning("Sum of the mixture weight should be 1.")
@@ -45,7 +45,7 @@ rztplnm <- function(n, mu, sig, theta, type1 = TRUE) {
   # theta: mixture weight for the first compoment
   if (length(mu) != length(sig) | length(mu) != length(theta) |
       length(sig) != length(theta)) {
-    stop("The length of vectors of mean, 
+    stop("The length of vectors of mean,
          variance and mixture weight need to be same.")
   }
   if (sum(theta) != 1) warning("Sum of the mixture weight should be 1.")

@@ -1,7 +1,7 @@
 #' MLE for the Zero-truncated Poisson Lognormal mixture distribtuion
 #'
 #' `ztplnmMLE` fits the Zero-truncated Poisson lognormal mixture distribution
-#' to data and estimates parameters mean `mu`, standard deviation `sig` and 
+#' to data and estimates parameters mean `mu`, standard deviation `sig` and
 #' mixture weight `theta` in the lognormal distribution.
 #'
 #' The function searches the maximum likelihood estimators of mean vector `mu`,
@@ -16,7 +16,7 @@
 #' standard deviation of the variables's natural logarithm
 #' @param lower_theta,upper_theta numeric values of lower and upper bounds for
 #'  mixture weights.
-#' @param type1 logical; if TRUE, Use type 1 ztpln else use type 2.  
+#' @param type1 logical; if TRUE, Use type 1 ztpln else use type 2.
 #' @param message mean of lognormal distribution in sample 3.
 #' @return \item{convergence}{An integer code. 0 indicates successful
 #' convergence.}
@@ -82,7 +82,7 @@ ztplnmMLE <- function(n,
                     upper = c(upper_mu, upper_sig, upper_theta),
                     n = n,
                     TRUE))
-  
+
   fit$mu <- fit$par[1:K]
   fit$sig <- fit$par[(K + 1):(2 * K)]
   theta <- fit$par[(2 * K + 1):(3 * K)]

@@ -56,7 +56,7 @@ sudo docker run -it --rm -v $(pwd):/home/rstudio/ztpln -e PASSWORD=test ztpln /b
 
 sudo docker run -it --rm -p 8787:8787 -v $(pwd):/home/rstudio/ztpln -e PASSWORD=test ztpln
 
-docker pull hub-mirror.c.163.com/rocker/verse:3.5.0 
+docker pull hub-mirror.c.163.com/rocker/verse:3.5.0
 
 docker run -it --rm -v $(pwd):/home/rstudio/ztpln -u rstudio ztpln:4.0.2 /bin/bash
 
@@ -237,7 +237,7 @@ actuar::dztpois(2, lambda)
 actuar::pztpois(2, lambda)
 
 countreg::pztpois(2, lambda)
-ppois(2, lambda) 
+ppois(2, lambda)
 (ppois(2, lambda) -  ppois(0, lambda))/ -(exp(-lambda) - 1)
 
 ppois(2, lambda) / (1 - exp(-lambda))
@@ -260,7 +260,7 @@ system.time(a <- do_pztpln0(30000, 5, 3))
 system.time(b <- do_pztpln2(30000, 5, 2)
 
 
-a 
+a
 b
 n <- 100
 mu <- 5
@@ -287,7 +287,7 @@ do_pztpln(c(1, 2, 3), log(2), 0.001)
 do_pztpln(1:1000, log(2), 1)
 
 do_pztpln0(2, 2, 1)
-do_dztpln(1, 2, 1)  + do_dztpln(2, 2, 1) 
+do_dztpln(1, 2, 1)  + do_dztpln(2, 2, 1)
 
 do_dztpln(2, 2, 1)
 do_dpln(2, 2, 1) / (1 - do_dpln(0, 2, 1))
@@ -440,7 +440,7 @@ system.time(rztpois2(exp(3)))
 
 y <- actuar::rztpois(n = 100, 2)
 
-actuar::dztpois(3, 2) 
+actuar::dztpois(3, 2)
 dpois(3, 2) / (1 - dpois(0, 2))
 
 dztpois(y, 2, log = TRUE) %>% sum
@@ -540,7 +540,7 @@ dztplnm(y, fit0$mu, fit0$sig, fit0$lambda, log = TRUE) %>% sum
 dztplnm(y, res$mu, res$sig, res$theta, log = TRUE) %>% sum
 dztplnm(y, c(res2$par[1], res2$par[3]), c(res2$par[2], res2$par[4]), c(res2$par[5], 1 - res2$par[5]),  log = TRUE) %>% sum
 
-n <- 2 
+n <- 2
 alpha <- 1:3
 
 l <- length(alpha)
@@ -568,9 +568,9 @@ K <- 3
 lower_mu = rep(-5, K)
 upper_mu = rep(log(max(counts)), K)
 lower_sig = rep(0.001, K)
-upper_sig = rep(10, K) 
+upper_sig = rep(10, K)
 lower_theta = rep(0.001, K)
-upper_theta = rep(0.999, K) 
+upper_theta = rep(0.999, K)
 
 cp /home/rstudio/ztpln_0.0.1.tar.gz /home/rstudio/ztpln/ztpln_0.0.1.tar.gz
 
@@ -665,7 +665,7 @@ like1 <- dztplnm(y, mu = c(2, 10), sigma = c(2, 3), theta = c(0.8, 0.2), log = T
 like2 <- dztplnm2(y, mu = c(2, 10), sigma = c(2, 3), theta = c(0.8, 0.2), log = T)
 plot(like2 ~ like1)
 
-lm(like1 ~ like2) 
+lm(like1 ~ like2)
 
 like3 <- dztplnm(y, mu = c(2, 6), sigma = c(2, 3), theta = c(0.2, 0.8), log = T)
 like4 <- dztplnm2(y, mu = c(2, 6), sigma = c(2, 3), theta = c(0.2, 0.8), log = T)
@@ -748,7 +748,7 @@ double do_dpln0(int x, double mu, double sig){
     plnintegrand f(x, mu, sig);
     double err_est;
     int err_code;
-    out = integrate(f, a, b, err_est, err_code) 
+    out = integrate(f, a, b, err_est, err_code)
       * (1 / std::sqrt(2 * M_PI * sig));
   return out;
 }
@@ -756,7 +756,7 @@ double do_dpln0(int x, double mu, double sig){
 // [[Rcpp::export]]
 double do_dztpln0(int x, double mu, double sig){
   double sig2 = sig * sig;
-  double p, p0, lik; 
+  double p, p0, lik;
   p = do_dpln0(x, mu, sig2);
   p0 = do_dpln0(0, mu, sig2);
   lik = p / (1.0 - p0);
@@ -798,7 +798,7 @@ ggplot(dat, aes(x = yy, y = xx)) +
   geom_text(aes(x = 0, y = exp(-lb) * 1.5, label = "p(0)")) +
   xlab("k") +
   ylab("x") +
-  theme_bw() 
+  theme_bw()
 
 
 // [[Rcpp::export]]
