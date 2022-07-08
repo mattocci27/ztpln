@@ -17,10 +17,10 @@ ztplnMLE(
 \item{n}{a integer vector of counts}
 
 \item{lower_mu, upper_mu}{numeric values of lower and upper bounds for mean of
-the variables's natrual logarithm.}
+the variables's natural logarithm.}
 
 \item{lower_sig, upper_sig}{numeric values of lower and upper bounds for
-standard deviatoin of the variables's natrual logarithm}
+standard deviation of the variables's natural logarithm}
 
 \item{type1}{logical; if TRUE, Use type 1 ztpln else use type 2.}
 }

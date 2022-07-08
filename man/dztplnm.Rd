@@ -3,7 +3,7 @@
 \name{dztplnm}
 \alias{dztplnm}
 \alias{rztplnm}
-\title{The zero-truncated compund poisson-lognormal distributions mixture}
+\title{The zero-truncated compound poisson-lognormal distributions mixture}
 \usage{
 dztplnm(x, mu, sig, theta, log = FALSE, type1 = TRUE)
 

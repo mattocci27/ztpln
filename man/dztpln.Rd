@@ -4,7 +4,7 @@
 \alias{dztpln}
 \alias{rztpln}
 \alias{pztpln}
-\title{The zero-truncated compund poisson-lognormal distributions}
+\title{The zero-truncated compound poisson-lognormal distributions}
 \usage{
 dztpln(x, mu, sig, log = FALSE, type1 = TRUE)
 
@@ -26,11 +26,11 @@ pztpln(x, mu, sig, log = FALSE, type1 = TRUE)
 \item{n}{number of random values to return.}
 }
 \value{
-dztpln gives the (log) density and rztpln generates
+dztpln gives the (log) density, pztpln gives the (log) distribution fucntion, and rztpln generates
 random variates.
 }
 \description{
-Density function and random generation for Zero-Trauncated Poisson Lognormal
+Density function and random generation for Zero-Truncated Poisson Lognormal
 distribution with parameters \code{mu} and sd \code{sig}.
 }
 \details{
