@@ -15,10 +15,10 @@
 #' For mathematical details, please see `vignette("ztpln")`
 #'
 #' @param n number of random values to return.
-#' @param x	vector of (non-negative integer) quantiles.
+#' @param x,q	vector of (non-negative integer) quantiles.
 #' @param mu mean of lognormal distribution.
 #' @param sig standard deviation of lognormal distribution.
-#' @param log logical; if TRUE, probabilities p are given as log(p).
+#' @param log,log_p logical; if TRUE, probabilities p are given as log(p).
 #' @param type1 logical; if TRUE, Use type 1 ztpln else use type 2.
 #' @return dztpln gives the (log) density, pztpln gives the (log) distribution fucntion, and rztpln generates
 #' random variates.
@@ -46,25 +46,25 @@ dztpln <- function(x, mu, sig, log = FALSE, type1 = TRUE) {
 
 #' @rdname dztpln
 #' @export
+pztpln <- function(q, mu, sig, log_p = FALSE, type1 = TRUE) {
+  if (length(mu) > 1 | length(sig) > 1)
+    stop("Vectorization of parameters not implemented")
+  if (sig < 0) stop("sig needs to be > 0")
+  if (any(!DistributionUtils::is.wholenumber(q))) warning("non integer values in q")
+  if (min(q) <= 0) warning("zero in q")
+  q <- q[q > 0]
+  if (type1) {
+    lik <- sum(do_dztpln(seq_len(q), mu, sig))
+  } else lik <- sum(do_dztpln2(seq_len(q), mu, sig))
+  if (log_p) return(log(lik)) else return(lik)
+}
+
+#' @rdname dztpln
+#' @export
 rztpln <- function(n, mu, sig, type1 = TRUE) {
   if (length(mu) > 1 | length(sig) > 1)
      stop("Vectorization of parameters not implemented")
   if (sig < 0) stop("sig needs to be > 0")
   if (sig > 15) stop("standard deviation > 15 in log-scale is too large")
   if (type1) do_vec_rztpln1(n, mu, sig) else do_vec_rztpln2(n, mu, sig)
-}
-
-#' @rdname dztpln
-#' @export
-pztpln <- function(x, mu, sig, log = FALSE, type1 = TRUE) {
-  if (length(mu) > 1 | length(sig) > 1)
-    stop("Vectorization of parameters not implemented")
-  if (sig < 0) stop("sig needs to be > 0")
-  if (any(!DistributionUtils::is.wholenumber(x))) warning("non integer values in x")
-  if (min(x) <= 0) warning("zero in x")
-  x <- x[x > 0]
-  if (type1) {
-    lik <- sum(do_dztpln(seq_len(x), mu, sig))
-  } else lik <- sum(do_dztpln2(seq_len(x), mu, sig))
-  if (log) return(log(lik)) else return(lik)
 }

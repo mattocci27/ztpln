@@ -15,3 +15,5 @@ build.rmd
 INPUT.md
 *.pdf
 *.tar.gz
+/doc/
+/Meta/

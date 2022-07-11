@@ -5,6 +5,82 @@ library(Rcpp)
 library(ztpln)
 library(poilog)
 
+x <- 5
+mu <- 3
+sig <- 2^2
+
+mf = (x - 1) * m - exp(m) - 0.5 / sig * ((m - mu) * (m - mu))
+z = m - 20
+d = 10
+while (d > 0.000001) {
+  if ((x - 1) * z - exp(z) - 0.5 / sig * ((z - mu) * (z - mu)) - mf +
+          log(1000000.0) > 0)
+    z = z - d  else z = z + d;
+  d = d / 2;
+}
+
+maxf <- function(x, mu, sig) {
+  z <- 0
+  d <- 100
+  while (d > 0.00001) {
+    if (x - 1 - exp(z) - 1 / sig * (z - mu) > 0) z <- z + d else z <- z - d
+    d <- d / 2
+  }
+  z
+}
+
+upper <- function(x, m, mu, sig) {
+  mf = (x - 1) * m - log(exp(exp(m)) - 1) - 0.5 / sig * ((m - mu) * (m - mu))
+  z = m + 20
+  d = 10
+  while (d > 0.000001) {
+    if ((x - 1) * z - exp(m) - 0.5 / sig * ((z - mu) * (z - mu)) - mf + log(1000000.0) > 0) z = z - d else z <- z + d
+    d = d / 2
+  }
+  z
+}
+lower <- function(x, m, mu, sig) {
+  mf = (x - 1) * m - exp(m) - 0.5 / sig * ((m - mu) * (m - mu))
+  z = m - 20
+  d = 10
+  while (d > 0.000001) {
+    if ((x - 1) * z - exp(m) - 0.5 / sig * ((z - mu) * (z - mu)) - mf + log(1000000.0) > 0) z = z - d else z <- z + d
+    d = d / 2
+  }
+  z
+}
+
+upper2 <- function(x, m, mu, sig) {
+  mf = (x - 1) * m - exp(m) - 0.5 / sig * ((m - mu) * (m - mu))
+  z = m + 20
+  d = 10
+  while (d > 0.000001) {
+    if ((x - 1) * z - log(exp(exp(z)) - 1) - 0.5 / sig * ((z - mu) * (z - mu)) - mf + log(1000000.0) > 0) z = z + d else z <- z - d
+    d = d / 2
+  }
+  z
+}
+lower2 <- function(x, m, mu, sig) {
+  mf = (x - 1) * m - log(exp(exp(m)) - 1) - 0.5 / sig * ((m - mu) * (m - mu))
+  z = m - 20
+  d = 10
+  while (d > 0.000001) {
+    if ((x - 1) * z - log(exp(exp(z)) - 1) - 0.5 / sig * ((z - mu) * (z - mu)) - mf + log(1000000.0) > 0) z = z - d else z <- z + d
+    d = d / 2
+  }
+  z
+}
+
+m <- maxf(5, 3, 4)
+
+upper2(5, m, 3, 4)
+lower2(5, m, 3, 4)
+
+upper(5, m, 3, 4)
+lower(5, m, 3, 4)
+
+
+
 dpoilog(2, 2, 3) / (1 - dpoilog(0, 2, 3))
 
 Rcpp::sourceCpp("./src/dztpln.cpp")

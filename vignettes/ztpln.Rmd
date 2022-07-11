@@ -98,7 +98,7 @@ for ZTPLN type 2.
 
 We can generate ZTPLN random variates.
 
-```{r, eval = T}
+```{r, eval=TRUE}
 library(dplyr)
 library(tidyr)
 library(ggplot2)
@@ -111,7 +111,7 @@ rztpln(n = 10, mu = 6, sig = 4)
 
 We can also generate mixture of ZTPLN random variates.
 
-```{r, eval = T}
+```{r, eval=TRUE}
 rztplnm(n = 100,
   mu = c(0, 4),
   sig = c(0.5, 0.5),
@@ -123,7 +123,7 @@ rztplnm(n = 100,
 
 Type 1 model (`dztpln(..., type1 = TRUE)`) fits better for type 1 random variates (`rztpln(..., type1 = TRUE)`).
 
-```{r, eval = T}
+```{r, eval=TRUE}
 y <- rztpln(n = 100, mu = 2, sig = 5, type1 = TRUE)
 sum(dztpln(y, mu = 2, sig = 5, log = TRUE, type1 = TRUE))
 sum(dztpln(y, mu = 2, sig = 5, log = TRUE, type1 = FALSE))
@@ -131,11 +131,10 @@ sum(dztpln(y, mu = 2, sig = 5, log = TRUE, type1 = FALSE))
 
 Type 2 model (`dztpln(..., type1 = FALSE)`) fits better for type 2 random variates (`rztpln(..., type1 = FALSE)`).
 
-```{r, eval = T}
+```{r, eval=TRUE}
 y2 <- rztpln(n = 100, mu = 2, sig = 5, type1 = FALSE)
 sum(dztpln(y2, mu = 2, sig = 5, log = TRUE, type1 = TRUE))
 sum(dztpln(y2, mu = 2, sig = 5, log = TRUE, type1 = FALSE))
-
 ```
 
 ### Probability density plots

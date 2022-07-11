@@ -2,24 +2,24 @@
 % Please edit documentation in R/dztpln.R
 \name{dztpln}
 \alias{dztpln}
-\alias{rztpln}
 \alias{pztpln}
+\alias{rztpln}
 \title{The zero-truncated compound poisson-lognormal distributions}
 \usage{
 dztpln(x, mu, sig, log = FALSE, type1 = TRUE)
 
-rztpln(n, mu, sig, type1 = TRUE)
+pztpln(q, mu, sig, log_p = FALSE, type1 = TRUE)
 
-pztpln(x, mu, sig, log = FALSE, type1 = TRUE)
+rztpln(n, mu, sig, type1 = TRUE)
 }
 \arguments{
-\item{x}{vector of (non-negative integer) quantiles.}
+\item{x, q}{vector of (non-negative integer) quantiles.}
 
 \item{mu}{mean of lognormal distribution.}
 
 \item{sig}{standard deviation of lognormal distribution.}
 
-\item{log}{logical; if TRUE, probabilities p are given as log(p).}
+\item{log, log_p}{logical; if TRUE, probabilities p are given as log(p).}
 
 \item{type1}{logical; if TRUE, Use type 1 ztpln else use type 2.}
 
