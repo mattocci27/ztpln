@@ -63,7 +63,7 @@ double maxf2(int x, double mu, double sig) {
   z = 0;
   d = 100;
   while (d > 0.00001) {
-    if (x - 1 - exp(z) - 1 / sig * (z - mu) > 0)
+    if (x - 1 - exp(z) - log(1 - exp(-exp(z))) - 1 / sig * (z - mu) > 0)
       z = z + d;
     else
       z = z - d;
@@ -74,11 +74,11 @@ double maxf2(int x, double mu, double sig) {
 
 double upper2(int x, double m, double mu, double sig) {
   double d, z, mf;
-  mf = (x - 1) * m - log(exp(exp(m)) - 1) - 0.5 / sig * ((m - mu) * (m - mu));
+  mf = (x - 1) * m - exp(z) - log(1 - exp(-exp(m))) - 0.5 / sig * ((m - mu) * (m - mu));
   z = m + 20;
   d = 10;
   while (d > 0.000001) {
-    if ((x - 1) * z - log(exp(exp(z)) - 1) - 0.5 / sig * ((z - mu) * (z - mu)) - mf +
+    if ((x - 1) * z - exp(z) - log(1 - exp(-exp(z))) - 0.5 / sig * ((z - mu) * (z - mu)) - mf +
             log(1000000.0) >
         0)
       z = z + d;
@@ -91,11 +91,11 @@ double upper2(int x, double m, double mu, double sig) {
 
 double lower2(int x, double m, double mu, double sig) {
   double d, z, mf;
-  mf = (x - 1) * m - log(exp(exp(m)) - 1) - 0.5 / sig * ((m - mu) * (m - mu));
+  mf = (x - 1) * m - exp(z) - log(1 - exp(-exp(m))) - 0.5 / sig * ((m - mu) * (m - mu));
   z = m - 20;
   d = 10;
   while (d > 0.000001) {
-    if ((x - 1) * z - log(exp(exp(z)) - 1) - 0.5 / sig * ((z - mu) * (z - mu)) - mf +
+    if ((x - 1) * z - exp(z) - log(1 - exp(-exp(z))) - 0.5 / sig * ((z - mu) * (z - mu)) - mf +
             log(1000000.0) >
         0)
       z = z - d;
@@ -130,10 +130,9 @@ private:
 public:
   plnintegrand2(int x_, double mu_, double sig_) : x(x_), mu(mu_), sig(sig_) {}
   double operator()(const double &z) const {
-    double fac, z2;
+    double fac;
     fac = std::lgamma(x + 1);
-    z2 = exp(z);
-    return exp(z * x - log(exp(z2) - 1) - 0.5 / sig * ((z - mu) * (z - mu)) -
+    return exp(z * x - exp(z) - log(1 - exp(-exp(z))) - 0.5 / sig * ((z - mu) * (z - mu)) -
                fac);
   }
 };
@@ -155,56 +154,19 @@ Rcpp::NumericVector do_dpln(Rcpp::IntegerVector x, double mu, double sig) {
   return out;
 }
 
-double check_diff(double mu, double sig) {
-  double a, b, m, a0, b0, m0;
-  m = maxf(100, mu, sig);
-  a = lower(100, m, mu, sig);
-  b = upper(100, m, mu, sig);
-  m0 = maxf(0, mu, sig);
-  a0 = lower(0, m0, mu, sig);
-  b0 = upper(0, m0, mu, sig);
-  plnintegrand f100(100, mu, sig);
-  plnintegrand f0(0, mu, sig);
-  plnintegrand2 f100_2(100, mu, sig);
-  double err_est;
-  int err_code;
-  double out100_2 = integrate(f100_2, a, b, err_est, err_code) *
-                    (1 / std::sqrt(2 * M_PI * sig));
-  double out100 =
-      integrate(f100, a, b, err_est, err_code) /
-      (std::sqrt(2 * M_PI * sig) - integrate(f0, a0, b0, err_est, err_code));
-
-  return out100_2 / out100;
-}
-
 Rcpp::NumericVector do_dpln2(Rcpp::IntegerVector x, double mu, double sig) {
   int n = x.size();
   Rcpp::NumericVector out(n);
   double a, b, m, a0, b0, m0;
-  double diff = check_diff(mu, sig);
   for (int i = 0; i < n; i++) {
     m = maxf(x[i], mu, sig);
-    a = lower2(x[i], m, mu, sig);
-    b = upper2(x[i], m, mu, sig);
-    /*b needs to be smaller than log(709)*/
-    if (b <= 6.563856) {
-      plnintegrand2 f2(x[i], mu, sig);
-      double err_est;
-      int err_code;
-      out[i] = integrate(f2, a, b, err_est, err_code) *
-               (1 / std::sqrt(2 * M_PI * sig));
-    } else {
-      double err_est;
-      int err_code;
-      m0 = maxf(0, mu, sig);
-      a0 = lower(0, m0, mu, sig);
-      b0 = upper(0, m0, mu, sig);
-      plnintegrand f(x[i], mu, sig);
-      plnintegrand f0(0, mu, sig);
-      double tmp = integrate(f, a, b, err_est, err_code);
-      double tmp0 = integrate(f0, a0, b0, err_est, err_code);
-      out[i] = tmp / (std::sqrt(2 * M_PI * sig) - tmp0) * diff;
-    }
+    a = lower(x[i], m, mu, sig);
+    b = upper(x[i], m, mu, sig);
+    plnintegrand2 f2(x[i], mu, sig);
+    double err_est;
+    int err_code;
+    out[i] = integrate(f2, a, b, err_est, err_code) *
+             (1 / std::sqrt(2 * M_PI * sig));
   }
   return out;
 }
