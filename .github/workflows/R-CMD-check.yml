@@ -32,17 +32,19 @@ jobs:
           - {os: ubuntu-latest,   r: 'release'}
           - {os: ubuntu-latest,   r: 'oldrel-1'}
 
-
     env:
-      R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
-      CRAN: ${{ matrix.config.cran }}
-      # don't treat missing suggested packages as error
-      _R_CHECK_FORCE_SUGGESTS_: false
-      # Some packages might unavailable on the older versions, so let's ignore xref warnings
-      _R_CHECK_RD_XREFS_: ${{ matrix.config.xref }}
-      # Runs vdiffr test only on the latest version of R
-      #VDIFFR_RUN_TESTS: ${{ matrix.config.vdiffr }}
-      #VDIFFR_LOG_PATH: "../vdiffr.Rout.fail"
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      R_KEEP_PKG_SOURCE: yes
+    # env:
+    #   R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
+    #   CRAN: ${{ matrix.config.cran }}
+    #   # don't treat missing suggested packages as error
+    #   _R_CHECK_FORCE_SUGGESTS_: false
+    #   # Some packages might unavailable on the older versions, so let's ignore xref warnings
+    #   _R_CHECK_RD_XREFS_: ${{ matrix.config.xref }}
+    #   # Runs vdiffr test only on the latest version of R
+    #   #VDIFFR_RUN_TESTS: ${{ matrix.config.vdiffr }}
+    #   #VDIFFR_LOG_PATH: "../vdiffr.Rout.fail"
 
     steps:
       - uses: actions/checkout@v2
