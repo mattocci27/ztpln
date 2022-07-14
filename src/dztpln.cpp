@@ -74,9 +74,9 @@ double maxf2(int x, double mu, double sig) {
 
 double upper2(int x, double m, double mu, double sig) {
   double d, z, mf;
-  mf = (x - 1) * m - exp(z) - log(1 - exp(-exp(m))) - 0.5 / sig * ((m - mu) * (m - mu));
   z = m + 20;
   d = 10;
+  mf = (x - 1) * m - exp(z) - log(1 - exp(-exp(m))) - 0.5 / sig * ((m - mu) * (m - mu));
   while (d > 0.000001) {
     if ((x - 1) * z - exp(z) - log(1 - exp(-exp(z))) - 0.5 / sig * ((z - mu) * (z - mu)) - mf +
             log(1000000.0) >
@@ -91,9 +91,9 @@ double upper2(int x, double m, double mu, double sig) {
 
 double lower2(int x, double m, double mu, double sig) {
   double d, z, mf;
-  mf = (x - 1) * m - exp(z) - log(1 - exp(-exp(m))) - 0.5 / sig * ((m - mu) * (m - mu));
   z = m - 20;
   d = 10;
+  mf = (x - 1) * m - exp(z) - log(1 - exp(-exp(m))) - 0.5 / sig * ((m - mu) * (m - mu));
   while (d > 0.000001) {
     if ((x - 1) * z - exp(z) - log(1 - exp(-exp(z))) - 0.5 / sig * ((z - mu) * (z - mu)) - mf +
             log(1000000.0) >
