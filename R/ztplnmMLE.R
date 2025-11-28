@@ -58,7 +58,7 @@ ztplnmMLE <- function(n,
   }
 
   # set initial values using normalmixEM for better convergence
-  if (class(fit0) == "try-error") {
+  if (inherits(fit0, "try-error")) {
     params <- c(rep(1, 2 * K), rep(1 / K, K))
   } else {
     params <- c(fit0$mu, fit0$sig, fit0$lambda)
