@@ -1,7 +1,7 @@
 Type: Package
 Package: ztpln
 Title: Zero-Truncated Poisson Lognormal Distribution
-Version: 0.1.2.9000
+Version: 0.1.3
 Date: 2025-11-28
 Author: Masatoshi Katabuchi
 Maintainer: Masatoshi Katabuchi <mattocci27@gmail.com>
