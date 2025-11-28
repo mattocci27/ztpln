@@ -2,9 +2,13 @@ name: R-CMD-check
 
 on:
   push:
-    branches: [master]
+    branches:
+      - master
+      - fix
   pull_request:
-    branches: [master]
+    branches:
+      - master
+      - fix
   workflow_dispatch:
 
 env:
