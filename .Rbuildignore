@@ -6,8 +6,9 @@
 ^note\.R$
 ^README\.md$
 ^cran-comments\.md$
-build.rmd
+^build\.[Rr]md$
 build.md
+^test\.R$
 test.rmd
 INPUT.md
 docker/*
