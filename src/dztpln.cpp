@@ -76,7 +76,7 @@ double upper2(int x, double m, double mu, double sig) {
   double d, z, mf;
   z = m + 20;
   d = 10;
-  mf = (x - 1) * m - exp(z) - log(1 - exp(-exp(m))) - 0.5 / sig * ((m - mu) * (m - mu));
+  mf = (x - 1) * m - exp(m) - log(1 - exp(-exp(m))) - 0.5 / sig * ((m - mu) * (m - mu));
   while (d > 0.000001) {
     if ((x - 1) * z - exp(z) - log(1 - exp(-exp(z))) - 0.5 / sig * ((z - mu) * (z - mu)) - mf +
             log(1000000.0) >
@@ -93,7 +93,7 @@ double lower2(int x, double m, double mu, double sig) {
   double d, z, mf;
   z = m - 20;
   d = 10;
-  mf = (x - 1) * m - exp(z) - log(1 - exp(-exp(m))) - 0.5 / sig * ((m - mu) * (m - mu));
+  mf = (x - 1) * m - exp(m) - log(1 - exp(-exp(m))) - 0.5 / sig * ((m - mu) * (m - mu));
   while (d > 0.000001) {
     if ((x - 1) * z - exp(z) - log(1 - exp(-exp(z))) - 0.5 / sig * ((z - mu) * (z - mu)) - mf +
             log(1000000.0) >
@@ -157,11 +157,11 @@ Rcpp::NumericVector do_dpln(Rcpp::IntegerVector x, double mu, double sig) {
 Rcpp::NumericVector do_dpln2(Rcpp::IntegerVector x, double mu, double sig) {
   int n = x.size();
   Rcpp::NumericVector out(n);
-  double a, b, m, a0, b0, m0;
+  double a, b, m;
   for (int i = 0; i < n; i++) {
-    m = maxf(x[i], mu, sig);
-    a = lower(x[i], m, mu, sig);
-    b = upper(x[i], m, mu, sig);
+    m = maxf2(x[i], mu, sig);
+    a = lower2(x[i], m, mu, sig);
+    b = upper2(x[i], m, mu, sig);
     plnintegrand2 f2(x[i], mu, sig);
     double err_est;
     int err_code;
